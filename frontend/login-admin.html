@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin · SMP Negeri 4 Boja Satu Atap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="/config.js"></script>
+</head>
+
+<body data-page="login-admin">
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="img/logo-smp4boja.png" alt="Logo SMP Negeri 4 Boja Satu Atap">
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">SMP Negeri 4 Boja Satu Atap</span>
+        <span class="brand-subtitle">Sistem Informasi</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <ul class="nav-main">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="pengumuman.html">Pengumuman</a></li>
+        <li><a href="jadwal.html">Jadwal Akademik</a></li>
+        <li><a href="kegiatan.html">Kegiatan</a></li>
+      </ul>
+
+      <div class="nav-services">
+        <input type="checkbox" id="service-toggle" class="service-toggle">
+        <label for="service-toggle" class="service-toggle-label">
+          <span></span><span></span><span></span>
+        </label>
+
+        <div class="service-menu">
+          <a href="data-guru.html">Data Guru</a>
+          <a href="data-siswa.html">Data Siswa</a>
+          <a href="izin.html">Izin Siswa</a>
+          <a href="pengaduan.html">Pengaduan</a>
+          <a href="download.html">Unduh Data</a>
+          <a href="login-admin.html">Login Admin</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="app-main">
+  <div class="app-shell">
+    <section class="section">
+      <h2>Login Admin</h2>
+      <p class="desc">
+        Halaman login digunakan admin sekolah untuk masuk ke dashboard pengelolaan data.
+      </p>
+
+      <form class="form" id="form-login" style="max-width:420px;margin:0 auto;">
+        <div class="form-row">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Masukkan username admin" autocomplete="username">
+        </div>
+
+        <div class="form-row">
+          <label for="password">Kata Sandi</label>
+          <input type="password" id="password" placeholder="Masukkan kata sandi" autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">
+          Masuk ke Dashboard
+        </button>
+
+        <p class="form-note">
+          Gunakan akun admin yang sudah tersimpan di database PostgreSQL.
+        </p>
+
+        <p id="login-message" class="form-note" style="font-weight:600;"></p>
+      </form>
+    </section>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-identity">
+      <div class="footer-brand">
+        <img src="img/logo-smp4boja.png" alt="Logo SMP Negeri 4 Boja Satu Atap">
+        <div>
+          <h3 class="footer-title">SMP Negeri 4 Boja Satu Atap</h3>
+          <p class="footer-text">Sistem Informasi sekolah sebagai media penyampaian informasi secara terpusat.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">Kontak</h4>
+      <div class="footer-contact-compact">
+        <a href="tel:085100765284"><span>No. Telp</span><strong>0851-0076-5284</strong></a>
+        <a href="mailto:smpn04bojasatap@gmail.com"><span>Email</span><strong>smpn04bojasatap@gmail.com</strong></a>
+      </div>
+      <div class="footer-social footer-social-accounts">
+        <a href="https://instagram.com/smp4bojasatap" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@smp4bojasatap</strong></a>
+        <a href="https://www.tiktok.com/@espaja.juara" target="_blank" rel="noopener noreferrer"><span>TikTok</span><strong>@espaja.juara</strong></a>
+        <a href="https://www.youtube.com/@smpn4bojasatap214" target="_blank" rel="noopener noreferrer"><span>YouTube</span><strong>@smpn4bojasatap214</strong></a>
+      </div>
+    </div>
+    <div class="footer-col footer-location">
+      <h4 class="footer-title">Lokasi Sekolah</h4>
+      <p class="footer-address">Jl. Pasigitan Boja Krajan, RT.2/RW.4, Sekargadung, Pasigitan, Kec. Boja, Kabupaten Kendal, Jawa Tengah 51381</p>
+      <div class="footer-map-preview">
+        <iframe src="https://www.google.com/maps?q=-7.1227,110.3390&z=16&output=embed" title="Peta lokasi SMP Negeri 4 Boja Satu Atap" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <a class="map-link" href="https://www.google.com/maps?q=-7.1227,110.3390" target="_blank" rel="noopener noreferrer">Buka lokasi di Google Maps →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 SMP Negeri 4 Boja Sistem Informasi</div>
+</footer>
+
+<script>
+  
+
+  const formLogin = document.getElementById("form-login");
+  const loginMessage = document.getElementById("login-message");
+
+  formLogin.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    loginMessage.style.color = "#6b7280";
+    loginMessage.textContent = "Memproses login...";
+
+    if (!username || !password) {
+      loginMessage.style.color = "#dc2626";
+      loginMessage.textContent = "Username dan kata sandi wajib diisi.";
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/admin/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        loginMessage.style.color = "#dc2626";
+        loginMessage.textContent = result.message || "Login gagal.";
+        return;
+      }
+
+      localStorage.setItem("adminToken", result.token);
+      localStorage.setItem("adminData", JSON.stringify(result.admin));
+
+      loginMessage.style.color = "#15803d";
+      loginMessage.textContent = "Login berhasil. Mengalihkan ke dashboard...";
+
+      setTimeout(() => {
+        window.location.href = "admin-dashboard.html";
+      }, 700);
+
+    } catch (error) {
+      console.error(error);
+      loginMessage.style.color = "#dc2626";
+      loginMessage.textContent = "Tidak dapat terhubung ke server.";
+    }
+  });
+</script>
+
+</body>
+</html>

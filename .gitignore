@@ -1,0 +1,18 @@
+# Node modules
+backend/node_modules/
+
+# Environment
+backend/.env
+
+# Log
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+
+# npm cache
+.npm/

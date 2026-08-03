@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Unduh Data · SMP Negeri 4 Boja Satu Atap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="/config.js"></script>
+</head>
+<body data-page="download">
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo"><img src="img/logo-smp4boja.png" alt="Logo SMP Negeri 4 Boja Satu Atap"></div>
+      <div class="brand-text"><span class="brand-title">SMP Negeri 4 Boja Satu Atap</span><span class="brand-subtitle">Sistem Informasi</span></div>
+    </div>
+    <nav class="main-nav">
+      <ul class="nav-main">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="pengumuman.html">Pengumuman</a></li>
+        <li><a href="jadwal.html">Jadwal Akademik</a></li>
+        <li><a href="kegiatan.html">Kegiatan</a></li>
+      </ul>
+      <div class="nav-services">
+        <input type="checkbox" id="service-toggle" class="service-toggle">
+        <label for="service-toggle" class="service-toggle-label"><span></span><span></span><span></span></label>
+        <div class="service-menu">
+          <a href="data-guru.html">Data Guru</a>
+          <a href="data-siswa.html">Data Siswa</a>
+          <a href="izin.html">Izin Siswa</a>
+          <a href="pengaduan.html">Pengaduan</a>
+          <a href="download.html">Unduh Data</a>
+          <a href="login-admin.html">Login Admin</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="app-main">
+  <div class="app-shell">
+    <section class="section">
+      <h2>Unduh Data & Dokumen</h2>
+      <p class="desc">Pengguna dapat mengunduh rangkuman informasi yang dimasukkan admin secara manual maupun dokumen yang diunggah sekolah.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Rangkuman Pengumuman</h3>
+          <p class="form-note">Mengunduh pengumuman aktif yang dikelola admin melalui dashboard.</p>
+          <a href="${API_URL}/unduh/pengumuman" id="download-pengumuman" class="btn btn-primary">Unduh Rangkuman Pengumuman</a>
+        </div>
+        <div class="card">
+          <h3>Rangkuman Jadwal Akademik</h3>
+          <p class="form-note">Mengunduh jadwal pelajaran dan ekstrakurikuler yang dimasukkan admin satu per satu.</p>
+          <a href="${API_URL}/unduh/jadwal" id="download-jadwal" class="btn btn-primary">Unduh Rangkuman Jadwal</a>
+        </div>
+        <div class="card">
+          <h3>Rangkuman Data Guru</h3>
+          <p class="form-note">Mengunduh daftar guru yang dikelola admin melalui dashboard.</p>
+          <a href="#" id="download-guru" class="btn btn-primary">Unduh Data Guru</a>
+        </div>
+        <div class="card">
+          <h3>Rangkuman Data Siswa</h3>
+          <p class="form-note">Mengunduh daftar siswa berdasarkan tingkat kelas.</p>
+          <a href="#" id="download-siswa" class="btn btn-primary">Unduh Data Siswa</a>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Dokumen Sekolah</h3>
+        <p class="form-note">Dokumen yang diunggah admin tetap tersedia untuk diunduh dari daftar berikut.</p>
+        <div class="table-wrapper">
+          <table class="admin-table">
+            <thead><tr><th>Nama Dokumen</th><th>Kategori</th><th>Keterangan</th><th>File</th></tr></thead>
+            <tbody id="dokumen-public-body"><tr><td colspan="4">Memuat dokumen...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-identity">
+      <div class="footer-brand">
+        <img src="img/logo-smp4boja.png" alt="Logo SMP Negeri 4 Boja Satu Atap">
+        <div>
+          <h3 class="footer-title">SMP Negeri 4 Boja Satu Atap</h3>
+          <p class="footer-text">Sistem Informasi sekolah sebagai media penyampaian informasi secara terpusat.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">Kontak</h4>
+      <div class="footer-contact-compact">
+        <a href="tel:085100765284"><span>No. Telp</span><strong>0851-0076-5284</strong></a>
+        <a href="mailto:smpn04bojasatap@gmail.com"><span>Email</span><strong>smpn04bojasatap@gmail.com</strong></a>
+      </div>
+      <div class="footer-social footer-social-accounts">
+        <a href="https://instagram.com/smp4bojasatap" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@smp4bojasatap</strong></a>
+        <a href="https://www.tiktok.com/@espaja.juara" target="_blank" rel="noopener noreferrer"><span>TikTok</span><strong>@espaja.juara</strong></a>
+        <a href="https://www.youtube.com/@smpn4bojasatap214" target="_blank" rel="noopener noreferrer"><span>YouTube</span><strong>@smpn4bojasatap214</strong></a>
+      </div>
+    </div>
+    <div class="footer-col footer-location">
+      <h4 class="footer-title">Lokasi Sekolah</h4>
+      <p class="footer-address">Jl. Pasigitan Boja Krajan, RT.2/RW.4, Sekargadung, Pasigitan, Kec. Boja, Kabupaten Kendal, Jawa Tengah 51381</p>
+      <div class="footer-map-preview">
+        <iframe src="https://www.google.com/maps?q=-7.1227,110.3390&z=16&output=embed" title="Peta lokasi SMP Negeri 4 Boja Satu Atap" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <a class="map-link" href="https://www.google.com/maps?q=-7.1227,110.3390" target="_blank" rel="noopener noreferrer">Buka lokasi di Google Maps →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 SMP Negeri 4 Boja Sistem Informasi</div>
+</footer>
+
+<script>
+  const btnPengumuman = document.getElementById("download-pengumuman");
+  const btnJadwal = document.getElementById("download-jadwal");
+  const btnGuru = document.getElementById("download-guru");
+  const btnSiswa = document.getElementById("download-siswa");
+  if (btnPengumuman) btnPengumuman.href = `${API_URL}/unduh/pengumuman`;
+  if (btnJadwal) btnJadwal.href = `${API_URL}/unduh/jadwal`;
+  if (btnGuru) btnGuru.href = `${API_URL}/unduh/guru`;
+  if (btnSiswa) btnSiswa.href = `${API_URL}/unduh/siswa`;
+
+  async function loadDokumenPublic() {
+    const tbody = document.getElementById("dokumen-public-body");
+    try {
+      const response = await fetch(`${API_URL}/dokumen`);
+      const result = await response.json();
+      if (!result.success || !result.data?.length) {
+        tbody.innerHTML = `<tr><td colspan="4">Belum ada dokumen yang tersedia.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = result.data.map(item => `
+        <tr>
+          <td>${escapeHTML(item.nama_dokumen)}</td>
+          <td>${escapeHTML(item.kategori)}</td>
+          <td>${escapeHTML(item.keterangan)}</td>
+          <td><a href="${BASE_URL}/uploads/${encodeURIComponent(item.file)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Unduh</a></td>
+        </tr>
+      `).join("");
+    } catch (error) {
+      console.error(error);
+      tbody.innerHTML = `<tr><td colspan="4">Gagal memuat dokumen.</td></tr>`;
+    }
+  }
+
+  function escapeHTML(value) {
+    if (value === null || value === undefined || value === "") return "-";
+    return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+  }
+
+  loadDokumenPublic();
+</script>
+</body>
+</html>

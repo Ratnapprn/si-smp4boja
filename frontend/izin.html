@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Izin Siswa · SMP Negeri 4 Boja Satu Atap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="/config.js"></script>
+</head>
+
+<body data-page="izin">
+
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="img/logo-smp4boja.png" alt="Logo SMP Negeri 4 Boja Satu Atap">
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">SMP Negeri 4 Boja Satu Atap</span>
+        <span class="brand-subtitle">Sistem Informasi</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <ul class="nav-main">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="pengumuman.html">Pengumuman</a></li>
+        <li><a href="jadwal.html">Jadwal Akademik</a></li>
+        <li><a href="kegiatan.html">Kegiatan</a></li>
+      </ul>
+
+      <div class="nav-services">
+        <input type="checkbox" id="service-toggle" class="service-toggle">
+        <label for="service-toggle" class="service-toggle-label">
+          <span></span><span></span><span></span>
+        </label>
+
+        <div class="service-menu">
+          <a href="data-guru.html">Data Guru</a>
+          <a href="data-siswa.html">Data Siswa</a>
+          <a href="izin.html">Izin Siswa</a>
+          <a href="pengaduan.html">Pengaduan</a>
+          <a href="download.html">Unduh Data</a>
+          <a href="login-admin.html">Login Admin</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="app-main">
+  <div class="app-shell">
+    <section class="section">
+      <h2>Formulir Izin Siswa</h2>
+      <p class="desc">
+        Form ini digunakan orang tua/wali untuk mengajukan izin ketidakhadiran siswa.
+      </p>
+
+      <form class="form" id="form-izin" enctype="multipart/form-data">
+        <div class="form-row">
+          <label for="nama-siswa">Nama Siswa</label>
+          <input type="text" id="nama-siswa" placeholder="Nama lengkap siswa" required>
+        </div>
+
+        <div class="form-row">
+          <label for="kelas">Kelas</label>
+          <select id="kelas" required>
+            <option value="">Pilih kelas</option>
+            <option>VII</option>
+            <option>VIII</option>
+            <option>IX</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="nama-ortu">Nama Orang Tua/Wali</label>
+          <input type="text" id="nama-ortu" placeholder="Nama orang tua/wali" required>
+        </div>
+
+        <div class="form-row">
+          <label for="tanggal-izin">Tanggal Tidak Masuk</label>
+          <input type="date" id="tanggal-izin" required>
+        </div>
+
+        <div class="form-row">
+          <label for="jenis-izin">Jenis Izin</label>
+          <select id="jenis-izin" required>
+            <option value="">Pilih jenis izin</option>
+            <option>Sakit</option>
+            <option>Keperluan Keluarga</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="alasan">Alasan Izin</label>
+          <textarea id="alasan" placeholder="Tuliskan alasan izin secara singkat"></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="bukti">Upload Bukti</label>
+          <input type="file" id="bukti" accept="image/*,.pdf">
+          <p class="form-note">Wajib mengunggah surat dokter, surat izin, atau bukti pendukung lainnya.</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">
+          Kirim Izin
+        </button>
+
+        <p id="izin-message" class="form-note" style="font-weight:600;"></p>
+      </form>
+    </section>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-identity">
+      <div class="footer-brand">
+        <img src="img/logo-smp4boja.png" alt="Logo SMP Negeri 4 Boja Satu Atap">
+        <div>
+          <h3 class="footer-title">SMP Negeri 4 Boja Satu Atap</h3>
+          <p class="footer-text">Sistem Informasi sekolah sebagai media penyampaian informasi secara terpusat.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">Kontak</h4>
+      <div class="footer-contact-compact">
+        <a href="tel:085100765284"><span>No. Telp</span><strong>0851-0076-5284</strong></a>
+        <a href="mailto:smpn04bojasatap@gmail.com"><span>Email</span><strong>smpn04bojasatap@gmail.com</strong></a>
+      </div>
+      <div class="footer-social footer-social-accounts">
+        <a href="https://instagram.com/smp4bojasatap" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@smp4bojasatap</strong></a>
+        <a href="https://www.tiktok.com/@espaja.juara" target="_blank" rel="noopener noreferrer"><span>TikTok</span><strong>@espaja.juara</strong></a>
+        <a href="https://www.youtube.com/@smpn4bojasatap214" target="_blank" rel="noopener noreferrer"><span>YouTube</span><strong>@smpn4bojasatap214</strong></a>
+      </div>
+    </div>
+    <div class="footer-col footer-location">
+      <h4 class="footer-title">Lokasi Sekolah</h4>
+      <p class="footer-address">Jl. Pasigitan Boja Krajan, RT.2/RW.4, Sekargadung, Pasigitan, Kec. Boja, Kabupaten Kendal, Jawa Tengah 51381</p>
+      <div class="footer-map-preview">
+        <iframe src="https://www.google.com/maps?q=-7.1227,110.3390&z=16&output=embed" title="Peta lokasi SMP Negeri 4 Boja Satu Atap" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <a class="map-link" href="https://www.google.com/maps?q=-7.1227,110.3390" target="_blank" rel="noopener noreferrer">Buka lokasi di Google Maps →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 SMP Negeri 4 Boja Sistem Informasi</div>
+</footer>
+
+<script>
+  
+
+  document.getElementById("form-izin").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const message = document.getElementById("izin-message");
+    const buktiInput = document.getElementById("bukti");
+    const bukti = buktiInput.files[0];
+
+    if (!bukti) {
+      message.style.color = "#dc2626";
+      message.textContent = "Wajib unggah bukti.";
+      buktiInput.focus();
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("nama_siswa", document.getElementById("nama-siswa").value.trim());
+    formData.append("kelas", document.getElementById("kelas").value);
+    formData.append("nama_ortu", document.getElementById("nama-ortu").value.trim());
+    formData.append("tanggal_tidak_masuk", document.getElementById("tanggal-izin").value);
+    formData.append("jenis_izin", document.getElementById("jenis-izin").value);
+    formData.append("alasan", document.getElementById("alasan").value.trim());
+    formData.append("bukti", bukti);
+
+    message.style.color = "#64748b";
+    message.textContent = "Mengirim izin...";
+
+    try {
+      const response = await fetch(`${API_URL}/izin`, {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        message.style.color = "#dc2626";
+        message.textContent = result.message || "Gagal mengirim izin.";
+        return;
+      }
+
+      message.style.color = "#15803d";
+      message.textContent = "Izin berhasil dikirim.";
+      document.getElementById("form-izin").reset();
+
+    } catch (error) {
+      console.error(error);
+      message.style.color = "#dc2626";
+      message.textContent = "Tidak dapat terhubung ke server.";
+    }
+  });
+</script>
+
+</body>
+</html>

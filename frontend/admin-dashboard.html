@@ -1,0 +1,3717 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Admin · SMP Negeri 4 Boja Satu Atap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg-body: #f5f7fb;
+  --bg-shell: #ffffff;
+  --primary: #0b3c5d;
+  --primary-2: #1e5f74;
+  --primary-soft: #cfe0e8;
+  --text-main: #0f172a;
+  --text-muted: #6b7280;
+  --border-soft: #e5e7eb;
+  --shadow-soft: 0 10px 25px rgba(11, 60, 93, 0.08);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top left, #edf2fb 0, #f7f9fc 55%, #e4edf7 100%);
+  color: var(--text-main);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* HEADER */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: linear-gradient(90deg, rgba(11, 60, 93, 0.98), rgba(30, 95, 116, 0.96));
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.2);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.brand-logo {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  max-width: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  flex: 0 0 32px !important;
+  position: relative !important;
+  border-radius: 50% !important;
+}
+
+.brand-logo img {
+  display: block !important;
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  max-width: 26px !important;
+  min-height: 26px !important;
+  max-height: 26px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  position: static !important;
+  inset: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* NAV */
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-main {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.nav-main li {
+  white-space: nowrap;
+}
+
+.nav-main a {
+  color: #e5f3ff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: 0.15s;
+}
+
+.nav-main a:hover,
+.nav-main a.active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-services {
+  position: relative;
+}
+
+.service-toggle {
+  display: none;
+}
+
+.service-toggle-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.35);
+  cursor: pointer;
+}
+
+.service-toggle-label span {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: #e5f3ff;
+}
+
+.service-menu {
+  position: absolute;
+  right: 0;
+  top: 38px;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 16px;
+  padding: 8px 10px;
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.35);
+  min-width: 190px;
+  display: none;
+}
+
+.service-menu a {
+  display: block;
+  padding: 7px 8px;
+  font-size: 13px;
+  border-radius: 8px;
+  color: #111827;
+}
+
+.service-menu a:hover,
+.service-menu a.active {
+  background: #e0ecf4;
+  color: var(--primary);
+}
+
+.service-toggle:checked + .service-toggle-label + .service-menu {
+  display: block;
+}
+
+/* LAYOUT */
+
+.app-main {
+  min-height: calc(100vh - 60px);
+  padding: 18px 10px 40px;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--bg-shell);
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
+  padding: 20px 18px 30px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+/* HERO */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 20px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 48%, #fefce8 100%);
+}
+
+.hero h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.hero-badges span {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--primary-soft);
+}
+
+.map-card {
+  width: 100%;
+  padding: 10px;
+}
+
+.map-placeholder {
+  border-radius: 14px;
+  border: 1px dashed #9ca3af;
+  background: repeating-linear-gradient(135deg, #f9fafb, #f9fafb 10px, #f3f4f6 10px, #f3f4f6 20px);
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+/* BUTTON */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(11, 60, 93, 0.35);
+}
+
+.btn-primary:hover {
+  background: #082f49;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* CARD */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* HOME */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.home-card-link {
+  color: inherit;
+}
+
+.home-card {
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #ffffff, #f3f4ff);
+  border-left: 4px solid var(--primary-soft);
+  transition: 0.15s;
+}
+
+.home-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(11, 60, 93, 0.22);
+}
+
+.home-card p {
+  font-size: 13px;
+  color: #4b5563;
+  margin: 6px 0 10px;
+}
+
+.home-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* LIST */
+
+.list {
+  list-style: none;
+  font-size: 14px;
+}
+
+.list li {
+  padding: 8px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+/* FORM */
+
+.form {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 18px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  font-size: 14px;
+}
+
+.form-row {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  display: block;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background: #f9fafb;
+  font-family: "Poppins", sans-serif;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.form-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(11, 60, 93, 0.15);
+}
+
+.form-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.gallery-item {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px;
+  border: 1px solid var(--border-soft);
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.05);
+}
+
+.gallery-thumb {
+  height: 110px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.gallery-caption {
+  font-size: 13px;
+  color: #374151;
+}
+
+/* ORGANISASI */
+
+.org-chart {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid var(--border-soft);
+}
+
+.org-level {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.org-node {
+  background: #ffffff;
+  border: 1px solid var(--primary-soft);
+  border-radius: 12px;
+  padding: 8px 10px;
+  min-width: 130px;
+  text-align: center;
+}
+
+.org-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.org-name {
+  font-size: 12px;
+  color: #374151;
+}
+
+.class-structure {
+  display: grid;
+  gap: 8px;
+}
+
+.class-role {
+  display: flex;
+  justify-content: space-between;
+  background: #f9fafb;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.class-role .role {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.class-role .name {
+  font-size: 12px;
+  color: #374151;
+}
+
+/* DOWNLOAD */
+
+.download-list a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.download-list a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+
+.app-footer {
+  background: #020617;
+  color: #e5e7eb;
+  padding: 18px 12px 12px;
+  margin-top: 18px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1.4fr 1.6fr;
+  gap: 18px;
+  font-size: 13px;
+}
+
+.footer-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.footer-text {
+  color: #cbd5f5;
+}
+
+.footer-list {
+  list-style: none;
+}
+
+.footer-list li {
+  margin-bottom: 4px;
+}
+
+.footer-map {
+  border-radius: 12px;
+  border: 1px dashed #4b5563;
+  background: radial-gradient(circle at top left, #0b1120, #020617);
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 10px auto 0;
+  font-size: 12px;
+  text-align: center;
+  color: #9ca3af;
+  border-top: 1px solid #1f2937;
+  padding-top: 6px;
+}
+
+/* ADMIN */
+
+.admin-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 18px;
+}
+
+.admin-sidebar {
+  width: 230px;
+  background: #0f172a;
+  border-radius: 18px;
+  padding: 14px;
+  color: #e5e7eb;
+  height: fit-content;
+}
+
+.admin-sidebar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+
+.admin-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.admin-sidebar-nav a,
+.logout-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #e5e7eb;
+}
+
+.admin-sidebar-nav a.active,
+.admin-sidebar-nav a:hover {
+  background: var(--primary);
+}
+
+.admin-sidebar-footer {
+  margin-top: 16px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.logout-link {
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.admin-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.admin-summary-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.admin-section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.admin-table th,
+.admin-table td {
+  border-bottom: 1px solid var(--border-soft);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.admin-table th {
+  background: #f9fafb;
+  color: #4b5563;
+}
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-green {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge-yellow {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.badge-blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.admin-action {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .hero,
+  .card-grid,
+  .home-grid,
+  .gallery,
+  .admin-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-main {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    max-width: calc(100vw - 90px);
+  }
+}
+
+/* =========================================================
+   FIX FINAL - KEGIATAN, TABEL, DAN DASHBOARD ADMIN
+   Tambahan ini diletakkan di bawah agar menimpa CSS lama.
+   ========================================================= */
+
+/* FOTO KEGIATAN PUBLIC */
+.gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch;
+}
+
+.gallery-item {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 12px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  text-align: left;
+  overflow: hidden;
+}
+
+.gallery-img {
+  width: 100% !important;
+  height: 180px !important;
+  max-height: 180px !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+
+.gallery-thumb {
+  width: 100%;
+  height: 180px !important;
+  max-height: 180px !important;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.gallery-caption {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.gallery-caption strong {
+  display: block;
+  font-size: 15px;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.gallery-caption span {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.gallery-caption p {
+  font-size: 13px;
+  color: #4b5563;
+  margin-top: 4px;
+}
+
+/* TABLE WRAPPER */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.admin-table img,
+.table-img,
+.admin-preview-img {
+  width: 70px !important;
+  height: 52px !important;
+  object-fit: cover !important;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+}
+
+/* DASHBOARD ADMIN - SECTION DIPISAH */
+.admin-page-section {
+  display: none;
+}
+
+.admin-page-section.active {
+  display: block;
+}
+
+/* Agar section biasa di dashboard juga bisa disembunyikan lewat JS */
+.admin-content > section {
+  scroll-margin-top: 90px;
+}
+
+/* SIDEBAR ADMIN LEBIH RAPI */
+.admin-sidebar {
+  position: sticky;
+  top: 88px;
+}
+
+.admin-sidebar-nav a {
+  cursor: pointer;
+}
+
+.admin-sidebar-nav a.active {
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(11, 60, 93, 0.24);
+}
+
+/* HEADER SECTION ADMIN */
+.admin-section-header,
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.admin-section-header h2,
+.section-header h2 {
+  margin-bottom: 0;
+}
+
+/* MODAL ADMIN */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-box {
+  width: min(560px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.modal-close {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 999px;
+  background: #e5e7eb;
+  color: #111827;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+/* LINK AKSI */
+.action,
+.admin-action {
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.action-danger,
+.admin-action-danger {
+  color: #dc2626;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* STATUS PESAN */
+.message {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* RESPONSIVE FIX */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .admin-sidebar {
+    position: static;
+  }
+
+  .admin-section-header,
+  .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gallery-img,
+  .gallery-thumb {
+    height: 190px !important;
+    max-height: 190px !important;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   FINAL DASHBOARD ADMIN & GALERI KEGIATAN
+   Letakkan bagian ini paling bawah agar menimpa style lama.
+   ========================================================= */
+.gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+}
+.gallery-item {
+  background: #ffffff !important;
+  border-radius: 18px !important;
+  padding: 12px !important;
+  border: 1px solid var(--border-soft) !important;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08) !important;
+  text-align: left !important;
+  overflow: hidden !important;
+}
+.gallery-img {
+  width: 100% !important;
+  height: 190px !important;
+  max-height: 190px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #eef3f8 !important;
+  display: block !important;
+  border-radius: 14px !important;
+  margin-bottom: 12px !important;
+  cursor: pointer !important;
+  transition: transform .2s ease !important;
+}
+.gallery-img:hover { transform: scale(1.02); }
+.gallery-thumb {
+  width: 100% !important;
+  height: 190px !important;
+  max-height: 190px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--primary) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  margin-bottom: 12px !important;
+}
+.gallery-caption { font-size: 13px !important; color: #374151 !important; line-height: 1.6 !important; }
+.gallery-caption strong { display: block !important; font-size: 15px !important; color: var(--text-main) !important; margin-bottom: 4px !important; }
+.gallery-caption span { display: block !important; font-size: 12px !important; color: var(--text-muted) !important; margin-bottom: 6px !important; }
+.gallery-caption p { font-size: 13px !important; color: #4b5563 !important; margin-top: 4px !important; }
+.image-modal { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0, 0, 0, .85); justify-content: center; align-items: center; padding: 18px; }
+.image-modal.show { display: flex; }
+.image-modal img { max-width: 92%; max-height: 90vh; border-radius: 14px; box-shadow: 0 0 24px rgba(0, 0, 0, .45); background: #ffffff; }
+.close-image { position: absolute; top: 18px; right: 34px; color: #ffffff; font-size: 42px; cursor: pointer; line-height: 1; }
+.admin-header { background: linear-gradient(90deg, #0b3c5d, #1e5f74); color: #ffffff; min-height: 66px; display: flex; align-items: center; box-shadow: 0 4px 16px rgba(15, 23, 42, .18); }
+.admin-header-inner { width: 100%; max-width: 1180px; margin: 0 auto; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.admin-brand { display: flex; align-items: center; gap: 10px; }
+.admin-logo { width: 42px; height: 42px; border-radius: 14px; background: rgba(255, 255, 255, .18); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.admin-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.admin-title { font-size: 18px; font-weight: 700; }
+.admin-subtitle { font-size: 12px; opacity: .9; }
+.admin-top-actions { display: flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 600; }
+.admin-page { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 220px 1fr; gap: 18px; padding: 18px; min-height: calc(100vh - 66px); }
+.admin-sidebar { background: #0f172a !important; color: #e5e7eb !important; border-radius: 16px !important; padding: 14px !important; min-height: calc(100vh - 102px); height: fit-content; display: flex; flex-direction: column; justify-content: space-between; position: sticky !important; top: 84px !important; }
+.sidebar-title { font-size: 11px; color: #9ca3af; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+.sidebar-menu { display: flex; flex-direction: column; gap: 7px; }
+.sidebar-menu a { display: flex; align-items: center; gap: 8px; padding: 10px 11px; border-radius: 10px; font-size: 14px; color: #e5e7eb; transition: .15s; cursor: pointer; }
+.sidebar-menu a:hover, .sidebar-menu a.active { background: linear-gradient(90deg, #0b3c5d, #1e5f74); color: #ffffff; box-shadow: 0 8px 18px rgba(11, 60, 93, .24); }
+.sidebar-logout { border-top: 1px solid rgba(255,255,255,.15); padding-top: 12px; margin-top: 18px; }
+.sidebar-logout a { display: flex; align-items: center; gap: 8px; background: rgba(239, 68, 68, .12); color: #fecaca; padding: 10px 11px; border-radius: 10px; font-size: 14px; }
+.admin-content { min-width: 0; }
+.admin-content > .section { display: none !important; margin-bottom: 22px; }
+.admin-content > .section.active-section { display: block !important; }
+.summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 12px; }
+.summary-card, .card { background: #ffffff; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(15, 23, 42, .05); padding: 14px; }
+.summary-card h3 { font-size: 14px; margin-bottom: 8px; }
+.summary-number { font-size: 30px; font-weight: 700; color: #0b3c5d; line-height: 1; margin-bottom: 8px; }
+.section-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 12px; }
+.table-wrapper { overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 760px; }
+.admin-table th, .admin-table td { padding: 10px 11px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+.admin-table th { background: #f8fafc; color: #475569; font-weight: 700; }
+.admin-thumb, .admin-table img, .table-img, .admin-preview-img { width: 72px !important; height: 54px !important; object-fit: contain !important; background: #eef3f8 !important; border-radius: 10px !important; border: 1px solid #e5e7eb !important; }
+.admin-thumb-placeholder { width: 72px; height: 54px; border-radius: 10px; border: 1px dashed #cbd5e1; background: #f8fafc; color: #64748b; font-size: 10px; display: flex; align-items: center; justify-content: center; text-align: center; }
+.badge { display: inline-block; padding: 4px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+.badge-green { background: #dcfce7; color: #15803d; }
+.badge-gray { background: #e5e7eb; color: #4b5563; }
+.badge-yellow { background: #fef9c3; color: #a16207; }
+.badge-blue { background: #dbeafe; color: #1d4ed8; }
+.action, .admin-action { color: #0b3c5d; font-weight: 700; cursor: pointer; }
+.action-danger, .admin-action-danger { color: #dc2626; font-weight: 700; cursor: pointer; }
+.action-muted { color: #64748b; font-weight: 700; cursor: pointer; }
+.status-select { padding: 6px 8px; border: 1px solid #d1d5db; border-radius: 8px; font-family: "Poppins", sans-serif; font-size: 12px; background: #f9fafb; }
+.modal-overlay { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 18px; background: rgba(15, 23, 42, .55); backdrop-filter: blur(2px); }
+.modal-overlay.show { display: flex; }
+.modal-box { width: min(560px, 100%); max-height: 90vh; overflow-y: auto; background: #ffffff; border-radius: 20px; padding: 20px; box-shadow: 0 25px 60px rgba(15, 23, 42, .35); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+.modal-header h3 { font-size: 20px; font-weight: 700; }
+.modal-close { width: 34px; height: 34px; border: none; border-radius: 999px; background: #e5e7eb; color: #111827; font-size: 20px; font-weight: 700; cursor: pointer; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px; }
+.btn-secondary { background: #e5e7eb; color: #111827; }
+.message { margin-top: 10px; font-size: 13px; font-weight: 600; }
+.admin-footer { background: #020617; color: #e5e7eb; margin-top: 0; padding: 16px 18px 10px; }
+.admin-footer-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 18px; font-size: 12px; }
+.admin-footer h3, .admin-footer h4 { font-size: 13px; margin-bottom: 6px; }
+.admin-footer p, .admin-footer li { color: #cbd5e1; margin-bottom: 4px; }
+.admin-footer ul { list-style: none; }
+.footer-box { border: 1px dashed #334155; border-radius: 8px; padding: 8px; color: #cbd5e1; font-size: 12px; }
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .admin-page { grid-template-columns: 1fr; }
+  .admin-sidebar { min-height: auto; position: static !important; }
+  .sidebar-menu { flex-direction: row; overflow-x: auto; }
+  .summary-grid, .admin-footer-inner { grid-template-columns: 1fr; }
+  .section-header { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .gallery { grid-template-columns: 1fr !important; }
+  .gallery-img, .gallery-thumb { height: 190px !important; max-height: 190px !important; }
+  .modal-actions { flex-direction: column; }
+  .modal-actions .btn { width: 100%; }
+}
+
+  /* =========================================================
+   ADMIN DASHBOARD - PEMISAH DATA SISWA & JADWAL
+========================================================= */
+.admin-hidden-data-target { display:none !important; }
+.admin-student-class-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; align-items:start; }
+.admin-class-card, .admin-schedule-group { background:#fff; border:1px solid #dbe5ec; border-radius:18px; box-shadow:0 8px 24px rgba(11,60,93,.07); overflow:hidden; }
+.admin-class-header, .admin-group-heading { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:20px 22px; background:linear-gradient(135deg,#0b3c5d,#1e5f74); color:#fff; }
+.admin-class-header h3, .admin-group-heading h3 { margin:3px 0 0; font-size:20px; }
+.admin-group-kicker { font-size:10px; font-weight:700; letter-spacing:1.4px; opacity:.78; }
+.admin-group-count { white-space:nowrap; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.2); border-radius:999px; padding:7px 11px; font-size:12px; font-weight:600; }
+.admin-class-list { padding:6px 18px; }
+.admin-student-row { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 4px; border-bottom:1px solid #e8edf1; }
+.admin-student-row:last-child { border-bottom:0; }
+.admin-student-name { font-weight:600; font-size:14px; }
+.admin-student-meta { display:flex; align-items:center; gap:10px; white-space:nowrap; font-size:13px; }
+.admin-class-empty, .admin-class-body { padding:22px; color:#64748b; }
+.admin-schedule-group { margin-top:18px; }
+.admin-schedule-group .admin-group-heading { border-radius:18px 18px 0 0; }
+.admin-schedule-day-grid { padding:16px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; background:#f8fafc; }
+.admin-day-card { background:#fff; border:1px solid #dbe5ec; border-radius:15px; overflow:hidden; }
+.admin-day-header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; background:#edf5f8; border-bottom:1px solid #dbe5ec; }
+.admin-day-header h4 { margin:0; font-size:16px; color:#0b3c5d; }
+.admin-day-header span { font-size:11px; color:#64748b; font-weight:600; }
+.admin-day-table-wrap { overflow-x:auto; }
+.admin-mini-table { width:100%; border-collapse:collapse; font-size:12px; }
+.admin-mini-table th { text-align:left; padding:10px 11px; background:#f8fafc; color:#475569; font-weight:700; white-space:nowrap; }
+.admin-mini-table td { padding:11px; border-top:1px solid #edf1f4; vertical-align:top; }
+.admin-mini-table tr:hover td { background:#fbfdfe; }
+.admin-actions-cell { white-space:nowrap; }
+.admin-actions-cell .action, .admin-actions-cell .action-danger { margin-right:8px; }
+.admin-extracurricular-grid { padding:16px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; background:#f8fafc; }
+.admin-extracurricular-card { display:flex; align-items:center; gap:15px; padding:17px; background:#fff; border:1px solid #dbe5ec; border-radius:15px; }
+.admin-extra-icon { width:42px; height:42px; flex:0 0 42px; border-radius:12px; display:grid; place-items:center; background:#e7f2f6; color:#0b3c5d; font-size:18px; }
+.admin-extra-main { min-width:0; flex:1; }
+.admin-extra-main h4 { margin:4px 0 6px; font-size:15px; }
+.admin-extra-main p { margin:0; color:#64748b; font-size:12px; display:flex; gap:7px; align-items:center; flex-wrap:wrap; }
+.admin-extra-actions { display:flex; flex-direction:column; gap:5px; white-space:nowrap; font-size:12px; }
+.admin-schedule-empty { padding:24px; color:#64748b; text-align:center; background:#fff; border:1px dashed #cbd5e1; border-radius:12px; grid-column:1/-1; }
+@media (max-width: 1000px) { .admin-student-class-grid { grid-template-columns:1fr; } .admin-schedule-day-grid, .admin-extracurricular-grid { grid-template-columns:1fr; } }
+@media (max-width: 650px) { .admin-student-row, .admin-extracurricular-card { align-items:flex-start; flex-direction:column; } .admin-student-meta { flex-wrap:wrap; } .admin-extra-actions { flex-direction:row; } }
+
+
+/* =========================================================
+   ADMIN DASHBOARD - JADWAL PER KELAS
+   Tampilan khusus dashboard: tidak menggunakan tabel horizontal.
+========================================================= */
+.admin-schedule-class-grid {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  background: #f8fafc;
+  align-items: start;
+}
+.admin-schedule-class-card {
+  background: #fff;
+  border: 1px solid #dbe5ec;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(11,60,93,.07);
+  min-width: 0;
+}
+.admin-schedule-class-card .admin-class-header {
+  padding: 18px 18px;
+}
+.admin-schedule-class-card .admin-class-header h3 {
+  margin: 3px 0 0;
+  font-size: 20px;
+}
+.admin-schedule-list {
+  padding: 6px 14px;
+}
+.admin-schedule-row {
+  padding: 15px 4px;
+  border-bottom: 1px solid #e8edf1;
+}
+.admin-schedule-row:last-child {
+  border-bottom: 0;
+}
+.admin-schedule-row-main {
+  min-width: 0;
+}
+.admin-schedule-subject {
+  color: #0f172a;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 750;
+  margin-bottom: 11px;
+  overflow-wrap: anywhere;
+}
+.admin-schedule-details {
+  display: grid;
+  grid-template-columns: 0.8fr 1.1fr 1.5fr;
+  gap: 8px;
+}
+.admin-schedule-details > div {
+  min-width: 0;
+  padding: 8px 7px;
+  background: #f8fafc;
+  border: 1px solid #edf1f4;
+  border-radius: 9px;
+}
+.admin-schedule-details span {
+  display: block;
+  margin-bottom: 3px;
+  color: #64748b;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.admin-schedule-details strong {
+  display: block;
+  color: #334155;
+  font-size: 11px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.admin-schedule-period {
+  margin-top: 8px;
+  color: #64748b;
+  font-size: 10px;
+}
+.admin-schedule-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px dashed #dbe5ec;
+}
+.admin-schedule-actions button,
+.admin-extra-actions button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+}
+.admin-schedule-actions .action,
+.admin-schedule-actions .action-danger {
+  font-size: 12px;
+}
+@media (max-width: 1200px) {
+  .admin-schedule-class-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .admin-schedule-class-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .admin-schedule-details { grid-template-columns: 1fr 1fr; }
+  .admin-schedule-details > div:last-child { grid-column: 1 / -1; }
+}
+
+</style>
+  <script src="/config.js"></script>
+</head>
+
+<body>
+
+<header class="admin-header">
+  <div class="admin-header-inner">
+    <div class="admin-brand">
+      <div class="admin-logo">🛠️</div>
+      <div class="admin-brand-text">
+        <span class="admin-title">Dashboard Admin</span>
+        <span class="admin-subtitle">SMP Negeri 4 Boja Satu Atap</span>
+      </div>
+    </div>
+
+    <div class="admin-top-actions">
+      <a href="index.html">Lihat Website</a>
+      <span id="admin-name">Admin · smpn4boja</span>
+    </div>
+  </div>
+</header>
+
+<main class="admin-page">
+  <aside class="admin-sidebar">
+    <div>
+      <div class="sidebar-title">Menu Admin</div>
+      <nav class="sidebar-menu">
+        <a href="#ringkasan" class="active">📊 Ringkasan</a>
+        <a href="#profil-sekolah">🏫 Profil Sekolah</a>
+        <a href="#pengumuman">📢 Pengumuman</a>
+        <a href="#kegiatan-admin">🖼️ Kegiatan</a>
+        <a href="#izin">📝 Izin & Pengaduan</a>
+        <a href="#guru">👩‍🏫 Data Guru</a>
+        <a href="#siswa">🧑‍🎓 Data Siswa</a>
+        <a href="#jadwal">📅 Jadwal</a>
+        <a href="#unduh">⬇️ Unduh Data</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-logout">
+      <a href="#" id="logout-button">🚪 Keluar</a>
+    </div>
+  </aside>
+
+  <section class="admin-content">
+    <section class="section active-section" id="ringkasan">
+      <h2>Ringkasan Dashboard</h2>
+      <p class="desc">Gambaran umum data yang dikelola admin pada Sistem Informasi SMP Negeri 4 Boja Satu Atap.</p>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <h3>Pengumuman Aktif</h3>
+          <div class="summary-number" id="jumlah-pengumuman">0</div>
+          <p>Pengumuman yang tampil di website.</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Data Guru & Siswa</h3>
+          <div class="summary-number" id="jumlah-guru-siswa">0</div>
+          <p>Total data guru dan siswa.</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Izin & Pengaduan</h3>
+          <div class="summary-number" id="jumlah-izin-pengaduan">0</div>
+          <p>Data yang masih menunggu diproses.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="profil-sekolah">
+      <div class="section-header">
+        <h2>Kelola Profil Sekolah</h2>
+      </div>
+
+      <p class="desc">Admin dapat mengubah profil sekolah yang tampil di halaman publik, termasuk deskripsi umum, visi, misi, fasilitas, dan data fisik.</p>
+
+      <form id="form-profil-sekolah" class="form">
+        <div class="form-grid">
+          <div class="form-row full-width">
+            <label for="profil-sekolah-isi">Profil Sekolah</label>
+            <textarea id="profil-sekolah-isi" placeholder="Masukkan keterangan umum tentang sekolah"></textarea>
+          </div>
+
+          <div class="form-row full-width">
+            <label for="profil-visi">Visi</label>
+            <textarea id="profil-visi" placeholder="Masukkan visi sekolah"></textarea>
+          </div>
+
+          <div class="form-row full-width">
+            <label for="profil-misi">Misi</label>
+            <textarea id="profil-misi" placeholder="Masukkan misi sekolah"></textarea>
+          </div>
+
+          <div class="form-row full-width">
+            <label for="profil-fasilitas">Fasilitas</label>
+            <textarea id="profil-fasilitas" placeholder="Masukkan satu fasilitas per baris"></textarea>
+          </div>
+
+          <div class="form-row full-width">
+            <label for="profil-data-fisik">Data Fisik</label>
+            <textarea id="profil-data-fisik" placeholder="Masukkan data fisik sekolah per baris"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Simpan Profil Sekolah</button>
+        </div>
+
+        <p class="message" id="profil-message"></p>
+      </form>
+    </section>
+
+    <section class="section" id="pengumuman">
+      <div class="section-header">
+        <h2>Kelola Pengumuman</h2>
+        <button class="btn btn-primary" id="btn-open-modal">+ Tambah Pengumuman</button>
+      </div>
+
+      <div class="card table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Judul</th>
+              <th>Isi</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="pengumuman-table-body">
+            <tr><td colspan="5">Memuat data pengumuman...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="kegiatan-admin">
+      <div class="section-header">
+        <h2>Kelola Kegiatan</h2>
+        <button class="btn btn-primary" id="btn-open-kegiatan-modal">+ Tambah Kegiatan</button>
+      </div>
+
+      <p class="desc">Admin dapat menambahkan dokumentasi kegiatan sekolah berupa judul, tanggal, deskripsi, foto, atau video.</p>
+
+      <div class="card table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Media</th>
+              <th>Tanggal</th>
+              <th>Judul</th>
+              <th>Deskripsi</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="kegiatan-table-body">
+            <tr><td colspan="5">Memuat data kegiatan...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="izin">
+      <div class="section-header">
+        <h2>Izin Siswa</h2>
+      </div>
+
+      <div class="card table-wrapper" style="margin-bottom:16px;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Tanggal Izin</th>
+              <th>Nama Siswa</th>
+              <th>Kelas</th>
+              <th>Orang Tua/Wali</th>
+              <th>Jenis</th>
+              <th>Alasan</th>
+              <th>Bukti</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="izin-table-body">
+            <tr><td colspan="9">Memuat data izin...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-header">
+        <h2>Pengaduan</h2>
+      </div>
+
+      <div class="card table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Pelapor</th>
+              <th>Nama Siswa</th>
+              <th>Kelas</th>
+              <th>Topik</th>
+              <th>Kontak</th>
+              <th>Isi</th>
+              <th>Bukti</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="pengaduan-table-body">
+            <tr><td colspan="10">Memuat data pengaduan...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+   <section class="section" id="guru">
+  <div class="section-header">
+    <h2>Kelola Data Guru</h2>
+
+    <div class="import-box">
+
+      <label for="excel-guru" class="btn-file">
+        📄 Pilih File Excel
+      </label>
+
+      <input
+        type="file"
+        id="excel-guru"
+        accept=".xlsx,.xls"
+        hidden>
+<button
+        class="btn btn-primary"
+        id="btn-import-guru">
+        Import Excel
+      </button>
+
+      <button
+        class="btn btn-primary"
+        id="btn-open-guru-modal">
+        + Tambah Guru
+      </button>
+
+    </div>
+  </div>
+
+  <div class="card table-wrapper">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Nama Guru</th>
+          <th>Mata Pelajaran</th>
+          <th>Jabatan</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+
+      <tbody id="guru-table-body">
+        <tr>
+          <td colspan="4">Memuat data guru...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+    <section class="section" id="siswa">
+  <div class="section-header">
+    <h2>Kelola Data Siswa</h2>
+    <div class="import-box">
+      <label for="excel-siswa" class="btn-file">📄 Pilih File Excel</label>
+      <input type="file" id="excel-siswa" accept=".xlsx,.xls" hidden>
+      <button class="btn btn-primary" id="btn-import-siswa">Import Excel</button>
+      <button class="btn btn-primary" id="btn-open-siswa-modal">+ Tambah Siswa</button>
+    </div>
+  </div>
+  <p class="desc">Data siswa dikelompokkan berdasarkan tingkat kelas agar admin lebih mudah mencari, menambah, mengedit, dan menghapus data.</p>
+  <div id="siswa-class-grid-admin" class="admin-student-class-grid">
+    <div class="admin-class-card"><div class="admin-class-body">Memuat data siswa...</div></div>
+  </div>
+  <div id="siswa-table-body" class="admin-hidden-data-target" aria-hidden="true"></div>
+</section>
+
+    <section class="section" id="jadwal">
+  <div class="section-header">
+    <h2>Kelola Jadwal</h2>
+    <div class="jadwal-admin-actions">
+      <label class="btn btn-secondary" for="excel-jadwal">📄 Pilih Excel Jadwal</label>
+      <input type="file" id="excel-jadwal" accept=".xlsx,.xls" hidden>
+      <button class="btn btn-secondary" id="btn-import-jadwal">Import Excel</button>
+      <button class="btn btn-primary" id="btn-open-jadwal-modal">+ Tambah Jadwal</button>
+    </div>
+  </div>
+  <p class="desc">Jadwal pelajaran dikelompokkan berdasarkan kelas agar admin dapat melihat, mengedit, dan menghapus jadwal tanpa harus menggeser tabel secara horizontal.</p>
+
+  <div class="admin-schedule-group lesson-group">
+    <div class="admin-group-heading">
+      <div><span class="admin-group-kicker">AKADEMIK</span><h3>Jadwal Pelajaran</h3></div>
+      <span class="admin-group-count" id="jadwal-pelajaran-count">0 data</span>
+    </div>
+    <div id="jadwal-pelajaran-grid" class="admin-schedule-class-grid">
+      <div class="admin-schedule-empty">Memuat jadwal pelajaran...</div>
+    </div>
+  </div>
+
+  <div class="admin-schedule-group extracurricular-group">
+    <div class="admin-group-heading">
+      <div><span class="admin-group-kicker">KEGIATAN SEKOLAH</span><h3>Jadwal Ekstrakurikuler</h3></div>
+      <span class="admin-group-count" id="jadwal-ekskul-count">0 data</span>
+    </div>
+    <div id="jadwal-ekskul-grid" class="admin-extracurricular-grid">
+      <div class="admin-schedule-empty">Memuat jadwal ekstrakurikuler...</div>
+    </div>
+  </div>
+  <div id="jadwal-table-body" class="admin-hidden-data-target" aria-hidden="true"></div>
+</section>
+
+<div class="modal-overlay" id="modal-jadwal">
+  <div class="modal-box modal-jadwal-box">
+    <div class="modal-header">
+      <h3 id="jadwal-modal-title">Tambah Jadwal</h3>
+      <button type="button" class="modal-close" id="btn-close-jadwal-modal">×</button>
+    </div>
+    <form id="form-jadwal">
+      <input type="hidden" id="jadwal-id">
+
+      <div class="form-row">
+        <label for="jenis-jadwal">Jenis Jadwal</label>
+        <select id="jenis-jadwal" required>
+          <option value="">Pilih jenis jadwal</option>
+          <option value="Pelajaran">Pelajaran</option>
+          <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+        </select>
+      </div>
+
+      <div id="jadwal-pelajaran-fields">
+        <div class="form-row">
+          <label for="periode-jadwal">Periode Tahun Pelajaran</label>
+          <input type="text" id="periode-jadwal" placeholder="Contoh: 2026/2027">
+        </div>
+
+        <div class="form-row form-row-inline">
+          <div>
+            <label for="jam-mulai-jadwal">Jam Mulai</label>
+            <input type="time" id="jam-mulai-jadwal">
+          </div>
+          <div>
+            <label for="jam-selesai-jadwal">Jam Selesai</label>
+            <input type="time" id="jam-selesai-jadwal">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="kelas-jadwal">Kelas</label>
+          <select id="kelas-jadwal">
+            <option value="">Pilih kelas</option>
+            <option value="VII">VII</option>
+            <option value="VIII">VIII</option>
+            <option value="IX">IX</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="guru-jadwal">Guru</label>
+          <input type="text" id="guru-jadwal" placeholder="Nama guru">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="hari-jadwal">Hari</label>
+        <select id="hari-jadwal" required>
+          <option value="">Pilih hari</option>
+          <option value="Senin">Senin</option>
+          <option value="Selasa">Selasa</option>
+          <option value="Rabu">Rabu</option>
+          <option value="Kamis">Kamis</option>
+          <option value="Jumat">Jumat</option>
+          <option value="Sabtu">Sabtu</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="mata-pelajaran-jadwal">Mata Pelajaran / Nama Kegiatan</label>
+        <input type="text" id="mata-pelajaran-jadwal" placeholder="Contoh: Matematika / Pramuka" required>
+      </div>
+
+      <div class="form-row">
+        <label for="keterangan-jadwal">Keterangan</label>
+        <textarea id="keterangan-jadwal" rows="3" placeholder="Keterangan tambahan jika diperlukan"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-jadwal-modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+
+      <p class="message" id="jadwal-message"></p>
+    </form>
+  </div>
+</div>
+
+    <section class="section" id="unduh">
+      <div class="section-header">
+        <h2>Kelola Unduh Data</h2>
+        <button class="btn btn-primary" id="btn-open-dokumen-modal">+ Upload Dokumen</button>
+      </div>
+
+      <p class="desc">Admin dapat mengunggah dokumen yang nantinya dapat diunduh oleh pengguna.</p>
+
+      <div class="card table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Nama Dokumen</th>
+              <th>Kategori</th>
+              <th>Keterangan</th>
+              <th>File</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="dokumen-table-body">
+            <tr><td colspan="5">Memuat data dokumen...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</main>
+
+<div class="modal-overlay" id="modal-pengumuman">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modal-title">Tambah Pengumuman</h3>
+      <button class="modal-close" id="btn-close-modal">×</button>
+    </div>
+
+    <form id="form-pengumuman" enctype="multipart/form-data">
+      <input type="hidden" id="pengumuman-id">
+
+      <div class="form-row">
+        <label for="judul">Judul Pengumuman</label>
+        <input type="text" id="judul" required>
+      </div>
+
+      <div class="form-row">
+        <label for="isi">Isi Pengumuman</label>
+        <textarea id="isi" required></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="tanggal">Tanggal</label>
+        <input type="date" id="tanggal">
+      </div>
+
+      <div class="form-row">
+        <label for="status">Status</label>
+        <select id="status">
+          <option value="Aktif">Aktif</option>
+          <option value="Arsip">Arsip</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="pengumuman-foto">Gambar / Poster Pendukung</label>
+        <input type="file" id="pengumuman-foto" accept="image/*,.pdf">
+        <p class="form-note">Bisa unggah poster, surat undangan, atau file pendukung lain yang relevan.</p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-modal">Batal</button>
+        <button type="submit" class="btn btn-primary" id="btn-submit-pengumuman">Simpan</button>
+      </div>
+
+      <p class="message" id="form-message"></p>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-guru">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="guru-modal-title">Tambah Guru</h3>
+      <button class="modal-close" id="btn-close-guru-modal">×</button>
+    </div>
+
+    <form id="form-guru">
+      <input type="hidden" id="guru-id">
+
+      <div class="form-row">
+        <label for="nama-guru">Nama Guru</label>
+        <input type="text" id="nama-guru" required>
+      </div>
+
+      <div class="form-row">
+        <label for="mata-pelajaran">Mata Pelajaran</label>
+        <input type="text" id="mata-pelajaran">
+      </div>
+
+      <div class="form-row">
+        <label for="jabatan-guru">Jabatan</label>
+        <input type="text" id="jabatan-guru">
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-guru-modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+
+      <p class="message" id="guru-message"></p>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-siswa">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="siswa-modal-title">Tambah Siswa</h3>
+      <button class="modal-close" id="btn-close-siswa-modal">×</button>
+    </div>
+
+    <form id="form-siswa">
+      <input type="hidden" id="siswa-id">
+
+      <div class="form-row">
+        <label for="nama-siswa">Nama Siswa</label>
+        <input type="text" id="nama-siswa" required>
+      </div>
+
+      <div class="form-row">
+        <label for="kelas-siswa">Kelas</label>
+        <select id="kelas-siswa" required>
+          <option value="">Pilih kelas</option>
+          <option>VII</option>
+          <option>VIII</option>
+          <option>IX</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="status-siswa">Status</label>
+        <select id="status-siswa">
+          <option value="Aktif">Aktif</option>
+          <option value="Nonaktif">Nonaktif</option>
+          <option value="Lulus">Lulus</option>
+        </select>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-siswa-modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+
+      <p class="message" id="siswa-message"></p>
+    </form>
+  </div>
+</div>
+
+
+
+<div class="modal-overlay" id="modal-kegiatan">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="kegiatan-modal-title">Tambah Kegiatan</h3>
+      <button class="modal-close" id="btn-close-kegiatan-modal">×</button>
+    </div>
+
+    <form id="form-kegiatan" enctype="multipart/form-data">
+      <input type="hidden" id="kegiatan-id">
+
+      <div class="form-row">
+        <label for="judul-kegiatan">Judul Kegiatan</label>
+        <input type="text" id="judul-kegiatan" placeholder="Contoh: Upacara Bendera" required>
+      </div>
+
+      <div class="form-row">
+        <label for="tanggal-kegiatan">Tanggal Kegiatan</label>
+        <input type="date" id="tanggal-kegiatan">
+      </div>
+
+      <div class="form-row">
+        <label for="deskripsi-kegiatan">Deskripsi</label>
+        <textarea id="deskripsi-kegiatan" placeholder="Tuliskan deskripsi singkat kegiatan"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="foto-kegiatan">Upload Foto / Video</label>
+        <input type="file" id="foto-kegiatan" accept="image/*,video/mp4,video/webm,video/ogg,video/quicktime,video/x-m4v">
+        <p class="message" style="color:#64748b;font-weight:400;">Bisa berupa foto atau video. Kosongkan jika sedang mengedit dan tidak ingin mengganti media.</p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-kegiatan-modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+
+      <p class="message" id="kegiatan-message"></p>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dokumen">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="dokumen-modal-title">Upload Dokumen</h3>
+      <button class="modal-close" id="btn-close-dokumen-modal">×</button>
+    </div>
+
+    <form id="form-dokumen" enctype="multipart/form-data">
+      <input type="hidden" id="dokumen-id">
+
+      <div class="form-row">
+        <label for="nama-dokumen">Nama Dokumen</label>
+        <input type="text" id="nama-dokumen" placeholder="Contoh: Kalender Akademik Semester Ganjil" required>
+      </div>
+
+      <div class="form-row">
+        <label for="kategori-dokumen">Kategori</label>
+        <select id="kategori-dokumen" required>
+          <option value="">Pilih kategori</option>
+          <option>Kalender Akademik</option>
+          <option>Jadwal Pelajaran</option>
+          <option>Jadwal Ekstrakurikuler</option>
+          <option>Rekap Pengumuman</option>
+          <option>Template Surat Izin</option>
+          <option>Lainnya</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="keterangan-dokumen">Keterangan</label>
+        <textarea id="keterangan-dokumen" placeholder="Tuliskan keterangan singkat dokumen"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="file-dokumen">Upload File</label>
+        <input type="file" id="file-dokumen" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-dokumen-modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+
+      <p class="message" id="dokumen-message"></p>
+    </form>
+  </div>
+</div>
+
+<footer class="admin-footer">
+  <div class="admin-footer-inner">
+    <div>
+      <h3>Dashboard Admin</h3>
+      <p>Dashboard digunakan untuk mengelola data Sistem Informasi SMP Negeri 4 Boja Satu Atap.</p>
+    </div>
+
+    <div>
+      <h4>Teknologi</h4>
+      <ul>
+        <li>Frontend: HTML, CSS, JavaScript</li>
+        <li>Backend: Node.js, Express</li>
+        <li>Database: PostgreSQL</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Kembali ke Website</h4>
+      <div class="footer-box">
+        Buka halaman <a href="index.html">Beranda</a> untuk kembali ke tampilan publik.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">&copy; 2026 SMP Negeri 4 Boja Satu Atap · Dashboard Admin</div>
+</footer>
+
+<script>
+  
+  const token = localStorage.getItem("adminToken");
+  const adminData = JSON.parse(localStorage.getItem("adminData") || "{}");
+
+  let pengumumanData = [];
+  let izinData = [];
+  let pengaduanData = [];
+  let guruData = [];
+  let siswaData = [];
+  let dokumenData = [];
+  let kegiatanData = [];
+  let jadwalData = [];
+
+  if (!token) {
+    alert("Silakan login terlebih dahulu.");
+    window.location.href = "login-admin.html";
+  }
+
+  if (adminData && adminData.username) {
+    document.getElementById("admin-name").textContent = "Admin · " + adminData.username;
+  }
+
+  document.getElementById("logout-button").addEventListener("click", function(event) {
+    event.preventDefault();
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("adminData");
+    window.location.href = "login-admin.html";
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    loadProfilAdmin();
+    loadPengumumanAdmin();
+    loadIzinAdmin();
+    loadPengaduanAdmin();
+    loadGuruAdmin();
+    loadSiswaAdmin();
+    loadDokumenAdmin();
+    loadKegiatanAdmin();
+    loadJadwalAdmin();
+
+    const formProfilSekolah = document.getElementById("form-profil-sekolah");
+    if (formProfilSekolah) {
+      formProfilSekolah.addEventListener("submit", simpanProfilSekolah);
+    }
+  });
+
+  const modalPengumuman = document.getElementById("modal-pengumuman");
+  const formPengumuman = document.getElementById("form-pengumuman");
+
+  async function loadProfilAdmin() {
+    try {
+      const response = await fetch(`${API_URL}/profil`);
+      const result = await response.json();
+      const data = result.data || {};
+
+      if (!data) {
+        return;
+      }
+
+      document.getElementById("profil-sekolah-isi").value = data.profil || data.deskripsi || "";
+      document.getElementById("profil-visi").value = data.visi || "";
+      document.getElementById("profil-misi").value = data.misi || "";
+      document.getElementById("profil-fasilitas").value = data.fasilitas || "";
+      document.getElementById("profil-data-fisik").value = data.data_fisik || "";
+    } catch (error) {
+      console.error("Gagal memuat profil admin:", error);
+    }
+  }
+
+  async function simpanProfilSekolah(event) {
+    event.preventDefault();
+
+    const message = document.getElementById("profil-message");
+    const payload = {
+      profil: document.getElementById("profil-sekolah-isi").value.trim(),
+      visi: document.getElementById("profil-visi").value.trim(),
+      misi: document.getElementById("profil-misi").value.trim(),
+      fasilitas: document.getElementById("profil-fasilitas").value.trim(),
+      data_fisik: document.getElementById("profil-data-fisik").value.trim(),
+    };
+
+    message.textContent = "Menyimpan profil sekolah...";
+
+    try {
+      const response = await fetch(`${API_URL}/profil`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message || "Gagal menyimpan profil sekolah.");
+      }
+
+      message.textContent = "Profil sekolah berhasil disimpan.";
+      message.style.color = "#0f766e";
+      await loadProfilAdmin();
+    } catch (error) {
+      console.error(error);
+      message.textContent = error.message || "Tidak dapat menyimpan profil sekolah.";
+      message.style.color = "#b91c1c";
+    }
+  }
+
+  document.getElementById("btn-open-modal").addEventListener("click", openTambahModal);
+  document.getElementById("btn-close-modal").addEventListener("click", closePengumumanModal);
+  document.getElementById("btn-cancel-modal").addEventListener("click", closePengumumanModal);
+
+  function openTambahModal() {
+    formPengumuman.reset();
+    document.getElementById("pengumuman-id").value = "";
+    document.getElementById("modal-title").textContent = "Tambah Pengumuman";
+    document.getElementById("btn-submit-pengumuman").textContent = "Simpan Pengumuman";
+    document.getElementById("form-message").textContent = "";
+    document.getElementById("tanggal").valueAsDate = new Date();
+    modalPengumuman.classList.add("show");
+  }
+
+  function openEditModal(id) {
+    const item = pengumumanData.find(data => Number(data.id) === Number(id));
+    if (!item) return alert("Data pengumuman tidak ditemukan.");
+
+    document.getElementById("pengumuman-id").value = item.id;
+    document.getElementById("judul").value = item.judul || "";
+    document.getElementById("isi").value = item.isi || "";
+    document.getElementById("tanggal").value = formatDateInput(item.tanggal);
+    document.getElementById("status").value = item.status || "Aktif";
+    document.getElementById("modal-title").textContent = "Edit Pengumuman";
+    document.getElementById("btn-submit-pengumuman").textContent = "Simpan Perubahan";
+    document.getElementById("form-message").textContent = "";
+    modalPengumuman.classList.add("show");
+  }
+
+  function closePengumumanModal() {
+    modalPengumuman.classList.remove("show");
+  }
+
+  async function loadPengumumanAdmin() {
+    const tbody = document.getElementById("pengumuman-table-body");
+    const jumlahPengumuman = document.getElementById("jumlah-pengumuman");
+
+    try {
+      const response = await fetch(`${API_URL}/pengumuman/admin`, {
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        tbody.innerHTML = `<tr><td colspan="5">Gagal memuat data pengumuman.</td></tr>`;
+        return;
+      }
+
+      pengumumanData = result.data || [];
+      jumlahPengumuman.textContent = pengumumanData.filter(item => item.status === "Aktif").length;
+
+      if (pengumumanData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5">Belum ada data pengumuman.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = pengumumanData.map(item => {
+        const badgeClass = item.status === "Aktif" ? "badge-green" : "badge-gray";
+        const arsipText = item.status === "Aktif" ? "Arsip" : "Aktifkan";
+
+        return `
+          <tr>
+            <td>${formatTanggal(item.tanggal)}</td>
+            <td>${escapeHTML(item.judul)}</td>
+            <td>${escapeHTML(item.isi)}</td>
+            <td><span class="badge ${badgeClass}">${escapeHTML(item.status)}</span></td>
+            <td>
+              <span class="action" onclick="openEditModal(${item.id})">Edit</span> ·
+              <span class="action-muted" onclick="toggleStatusPengumuman(${item.id})">${arsipText}</span> ·
+              <span class="action-danger" onclick="hapusPengumuman(${item.id})">Hapus</span>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+    } catch (error) {
+      console.error(error);
+      tbody.innerHTML = `<tr><td colspan="5">Tidak dapat terhubung ke server.</td></tr>`;
+    }
+  }
+
+  formPengumuman.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const id = document.getElementById("pengumuman-id").value;
+    const judul = document.getElementById("judul").value.trim();
+    const isi = document.getElementById("isi").value.trim();
+    const tanggal = document.getElementById("tanggal").value;
+    const status = document.getElementById("status").value;
+    const fotoInput = document.getElementById("pengumuman-foto");
+    const foto = fotoInput.files[0];
+    const message = document.getElementById("form-message");
+
+    if (!judul || !isi) {
+      message.style.color = "#dc2626";
+      message.textContent = "Judul dan isi pengumuman wajib diisi.";
+      return;
+    }
+
+    try {
+      const url = id ? `${API_URL}/pengumuman/${id}` : `${API_URL}/pengumuman`;
+      const method = id ? "PUT" : "POST";
+      const formData = new FormData();
+
+      formData.append("judul", judul);
+      formData.append("isi", isi);
+      formData.append("tanggal", tanggal);
+      formData.append("status", status);
+
+      if (foto) {
+        formData.append("foto", foto);
+      }
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Authorization": `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        message.style.color = "#dc2626";
+        message.textContent = result.message || "Gagal menyimpan data.";
+        return;
+      }
+
+      message.style.color = "#15803d";
+      message.textContent = id ? "Pengumuman berhasil diperbarui." : "Pengumuman berhasil ditambahkan.";
+
+      await loadPengumumanAdmin();
+
+      setTimeout(closePengumumanModal, 600);
+
+    } catch (error) {
+      console.error(error);
+      message.style.color = "#dc2626";
+      message.textContent = "Tidak dapat terhubung ke server.";
+    }
+  });
+
+  async function toggleStatusPengumuman(id) {
+    const item = pengumumanData.find(data => Number(data.id) === Number(id));
+    if (!item) return alert("Data pengumuman tidak ditemukan.");
+
+    const statusBaru = item.status === "Aktif" ? "Arsip" : "Aktif";
+    if (!confirm(`Yakin ingin mengubah status menjadi ${statusBaru}?`)) return;
+
+    try {
+      const response = await fetch(`${API_URL}/pengumuman/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          judul: item.judul,
+          isi: item.isi,
+          tanggal: formatDateInput(item.tanggal),
+          status: statusBaru
+        })
+      });
+
+      const result = await response.json();
+      if (!result.success) return alert(result.message || "Gagal mengubah status.");
+
+      await loadPengumumanAdmin();
+
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    }
+  }
+
+  async function hapusPengumuman(id) {
+    if (!confirm("Yakin ingin menghapus pengumuman ini?")) return;
+
+    try {
+      const response = await fetch(`${API_URL}/pengumuman/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+      if (!result.success) return alert(result.message || "Gagal menghapus pengumuman.");
+
+      await loadPengumumanAdmin();
+
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    }
+  }
+
+  async function loadIzinAdmin() {
+    const tbody = document.getElementById("izin-table-body");
+
+    try {
+      const response = await fetch(`${API_URL}/izin/admin`, {
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        tbody.innerHTML = `<tr><td colspan="9">Gagal memuat data izin.</td></tr>`;
+        return;
+      }
+
+      izinData = result.data || [];
+
+      if (izinData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9">Belum ada data izin.</td></tr>`;
+        updateJumlahIzinPengaduan();
+        return;
+      }
+
+      tbody.innerHTML = izinData.map(item => `
+        <tr>
+          <td>${formatTanggal(item.tanggal_tidak_masuk)}</td>
+          <td>${escapeHTML(item.nama_siswa)}</td>
+          <td>${escapeHTML(normalizeKelasAdmin(item.kelas) || "-")}</td>
+          <td>${escapeHTML(item.nama_ortu)}</td>
+          <td>${escapeHTML(item.jenis_izin)}</td>
+          <td>${escapeHTML(item.alasan)}</td>
+          <td>${renderBukti(item.bukti)}</td>
+          <td>${renderStatusSelect("izin", item.id, item.status)}</td>
+          <td><span class="action-danger" onclick="hapusIzin(${item.id})">Hapus</span></td>
+        </tr>
+      `).join("");
+
+      updateJumlahIzinPengaduan();
+
+    } catch (error) {
+      console.error(error);
+      tbody.innerHTML = `<tr><td colspan="9">Tidak dapat terhubung ke server.</td></tr>`;
+    }
+  }
+
+  async function loadPengaduanAdmin() {
+    const tbody = document.getElementById("pengaduan-table-body");
+
+    try {
+      const response = await fetch(`${API_URL}/pengaduan/admin`, {
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        tbody.innerHTML = `<tr><td colspan="10">Gagal memuat data pengaduan.</td></tr>`;
+        return;
+      }
+
+      pengaduanData = result.data || [];
+
+      if (pengaduanData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10">Belum ada data pengaduan.</td></tr>`;
+        updateJumlahIzinPengaduan();
+        return;
+      }
+
+      tbody.innerHTML = pengaduanData.map(item => `
+        <tr>
+          <td>${formatTanggal(item.created_at)}</td>
+          <td>${escapeHTML(item.nama_pelapor)}</td>
+          <td>${escapeHTML(item.nama_siswa)}</td>
+          <td>${escapeHTML(normalizeKelasAdmin(item.kelas) || "-")}</td>
+          <td>${escapeHTML(item.topik_pengaduan)}</td>
+          <td>${escapeHTML(item.kontak)}</td>
+          <td>${escapeHTML(item.isi_pengaduan)}</td>
+          <td>${renderBukti(item.bukti)}</td>
+          <td>${renderStatusSelect("pengaduan", item.id, item.status)}</td>
+          <td><span class="action-danger" onclick="hapusPengaduan(${item.id})">Hapus</span></td>
+        </tr>
+      `).join("");
+
+      updateJumlahIzinPengaduan();
+
+    } catch (error) {
+      console.error(error);
+      tbody.innerHTML = `<tr><td colspan="10">Tidak dapat terhubung ke server.</td></tr>`;
+    }
+  }
+    const modalGuru = document.getElementById("modal-guru");
+  const formGuru = document.getElementById("form-guru");
+
+  document.getElementById("btn-import-guru").addEventListener("click", async () => {
+  const file = document.getElementById("excel-guru").files[0];
+
+  if (!file) {
+    alert("Pilih file Excel terlebih dahulu.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await fetch(`${API_URL}/guru/import`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      alert(result.message);
+      return;
+    }
+
+    alert(result.message);
+
+    document.getElementById("excel-guru").value = "";
+
+    loadGuruAdmin();
+
+  } catch (err) {
+    console.error(err);
+    alert("Gagal mengupload Excel.");
+  }
+});
+
+  document.getElementById("btn-open-guru-modal").addEventListener("click", openTambahGuruModal);
+  document.getElementById("btn-close-guru-modal").addEventListener("click", closeGuruModal);
+  document.getElementById("btn-cancel-guru-modal").addEventListener("click", closeGuruModal);
+
+  function openTambahGuruModal() {
+    formGuru.reset();
+    document.getElementById("guru-id").value = "";
+    document.getElementById("guru-modal-title").textContent = "Tambah Guru";
+    document.getElementById("guru-message").textContent = "";
+    modalGuru.classList.add("show");
+  }
+
+  function openEditGuruModal(id) {
+    const item = guruData.find(data => Number(data.id) === Number(id));
+    if (!item) return alert("Data guru tidak ditemukan.");
+
+    document.getElementById("guru-id").value = item.id;
+    document.getElementById("nama-guru").value = item.nama_guru || "";
+    document.getElementById("mata-pelajaran").value = item.mata_pelajaran || "";
+    document.getElementById("jabatan-guru").value = item.jabatan || "";
+    document.getElementById("guru-modal-title").textContent = "Edit Guru";
+    document.getElementById("guru-message").textContent = "";
+    modalGuru.classList.add("show");
+  }
+
+  function closeGuruModal() {
+    modalGuru.classList.remove("show");
+  }
+
+  async function loadGuruAdmin() {
+    const tbody = document.getElementById("guru-table-body");
+
+    try {
+      const response = await fetch(`${API_URL}/guru/admin`, {
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        tbody.innerHTML = `<tr><td colspan="4">Gagal memuat data guru.</td></tr>`;
+        return;
+      }
+
+      guruData = result.data || [];
+      guruData.sort((a, b) => String(a.nama_guru || "").localeCompare(String(b.nama_guru || ""), "id", { sensitivity: "base" }));
+
+      if (guruData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4">Belum ada data guru.</td></tr>`;
+        updateJumlahGuruSiswa();
+        return;
+      }
+
+      tbody.innerHTML = guruData.map(item => `
+        <tr>
+          <td>${escapeHTML(item.nama_guru || "-")}</td>
+          <td>${escapeHTML(item.mata_pelajaran)}</td>
+          <td>${escapeHTML(item.jabatan)}</td>
+          <td>
+            <span class="action" onclick="openEditGuruModal(${item.id})">Edit</span> ·
+            <span class="action-danger" onclick="hapusGuru(${item.id})">Hapus</span>
+          </td>
+        </tr>
+      `).join("");
+
+      updateJumlahGuruSiswa();
+
+    } catch (error) {
+      console.error(error);
+      tbody.innerHTML = `<tr><td colspan="4">Tidak dapat terhubung ke server.</td></tr>`;
+    }
+  }
+
+  formGuru.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const id = document.getElementById("guru-id").value;
+    const nama_guru = document.getElementById("nama-guru").value.trim();
+    const mata_pelajaran = document.getElementById("mata-pelajaran").value.trim();
+    const jabatan = document.getElementById("jabatan-guru").value.trim();
+    const message = document.getElementById("guru-message");
+
+    if (!nama_guru) {
+      message.style.color = "#dc2626";
+      message.textContent = "Nama guru wajib diisi.";
+      return;
+    }
+
+    try {
+      const url = id ? `${API_URL}/guru/${id}` : `${API_URL}/guru`;
+      const method = id ? "PUT" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          nama_guru,
+          mata_pelajaran,
+          jabatan
+        })
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        message.style.color = "#dc2626";
+        message.textContent = result.message || "Gagal menyimpan data guru.";
+        return;
+      }
+
+      message.style.color = "#15803d";
+      message.textContent = id ? "Data guru berhasil diperbarui." : "Data guru berhasil ditambahkan.";
+
+      await loadGuruAdmin();
+
+      setTimeout(closeGuruModal, 600);
+
+    } catch (error) {
+      console.error(error);
+      message.style.color = "#dc2626";
+      message.textContent = "Tidak dapat terhubung ke server.";
+    }
+  });
+
+  async function hapusGuru(id) {
+    if (!confirm("Yakin ingin menghapus data guru ini?")) return;
+
+    try {
+      const response = await fetch(`${API_URL}/guru/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        alert(result.message || "Gagal menghapus data guru.");
+        return;
+      }
+
+      await loadGuruAdmin();
+
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    }
+  }
+
+ const modalSiswa = document.getElementById("modal-siswa");
+const formSiswa = document.getElementById("form-siswa");
+
+document.getElementById("btn-open-siswa-modal").addEventListener("click", openTambahSiswaModal);
+document.getElementById("btn-close-siswa-modal").addEventListener("click", closeSiswaModal);
+document.getElementById("btn-cancel-siswa-modal").addEventListener("click", closeSiswaModal);
+
+function openTambahSiswaModal() {
+  formSiswa.reset();
+  document.getElementById("siswa-id").value = "";
+  document.getElementById("siswa-modal-title").textContent = "Tambah Siswa";
+  document.getElementById("siswa-message").textContent = "";
+  modalSiswa.classList.add("show");
+}
+
+function openEditSiswaModal(id) {
+  const item = siswaData.find(data => Number(data.id) === Number(id));
+  if (!item) return alert("Data siswa tidak ditemukan.");
+
+  document.getElementById("siswa-id").value = item.id;
+  document.getElementById("nama-siswa").value = item.nama_siswa || "";
+  document.getElementById("kelas-siswa").value = item.kelas || "";
+  document.getElementById("status-siswa").value = item.status || "Aktif";
+  document.getElementById("siswa-modal-title").textContent = "Edit Siswa";
+  document.getElementById("siswa-message").textContent = "";
+  modalSiswa.classList.add("show");
+}
+
+function closeSiswaModal() {
+  modalSiswa.classList.remove("show");
+}
+
+function normalizeKelasAdmin(value) {
+  const text = String(value || "").trim().toUpperCase();
+  if (/^VIII(?:\s|$)/.test(text) || /^8(?:\s|[A-Z]|$)/.test(text)) return "VIII";
+  if (/^VII(?:\s|$)/.test(text) || /^7(?:\s|[A-Z]|$)/.test(text)) return "VII";
+  if (/^IX(?:\s|$)/.test(text) || /^9(?:\s|[A-Z]|$)/.test(text)) return "IX";
+  return text;
+}
+
+async function loadSiswaAdmin() {
+  const target = document.getElementById("siswa-class-grid-admin");
+  if (!target) return;
+
+  try {
+    const response = await fetch(`${API_URL}/siswa/admin`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const result = await response.json();
+
+    if (!result.success) {
+      target.innerHTML = `<div class="admin-class-card"><div class="admin-class-body">Gagal memuat data siswa.</div></div>`;
+      return;
+    }
+
+    siswaData = result.data || [];
+    const groups = { VII: [], VIII: [], IX: [] };
+    const lainnya = [];
+
+    siswaData.forEach(item => {
+      const kelas = normalizeKelasAdmin(item.kelas);
+      if (groups[kelas]) groups[kelas].push(item);
+      else lainnya.push(item);
+    });
+
+    Object.values(groups).forEach(items => items.sort((a, b) =>
+      String(a.nama_siswa || "").localeCompare(String(b.nama_siswa || ""), "id", { sensitivity: "base" })
+    ));
+    lainnya.sort((a, b) => String(a.nama_siswa || "").localeCompare(String(b.nama_siswa || ""), "id", { sensitivity: "base" }));
+
+    const renderClass = (kelas, items) => `
+      <article class="admin-class-card">
+        <div class="admin-class-header">
+          <div>
+            <span class="admin-group-kicker">PESERTA DIDIK</span>
+            <h3>Kelas ${kelas}</h3>
+          </div>
+          <span class="admin-group-count">${items.length} siswa</span>
+        </div>
+        <div class="admin-class-list">
+          ${items.length ? items.map(item => {
+            const badgeClass = item.status === "Aktif" ? "badge-green" : "badge-gray";
+            return `<div class="admin-student-row">
+              <div class="admin-student-name">${escapeHTML(item.nama_siswa || "-")}</div>
+              <div class="admin-student-meta"><span class="badge ${badgeClass}">${escapeHTML(item.status || "Aktif")}</span>
+              <span class="action" onclick="openEditSiswaModal(${item.id})">Edit</span>
+              <span class="action-danger" onclick="hapusSiswa(${item.id})">Hapus</span></div>
+            </div>`;
+          }).join("") : `<div class="admin-class-empty">Belum ada data siswa kelas ${kelas}.</div>`}
+        </div>
+      </article>`;
+
+    let html = ["VII", "VIII", "IX"].map(k => renderClass(k, groups[k])).join("");
+    if (lainnya.length) html += renderClass("Lainnya", lainnya);
+    target.innerHTML = html;
+    updateJumlahGuruSiswa();
+  } catch (error) {
+    console.error(error);
+    target.innerHTML = `<div class="admin-class-card"><div class="admin-class-body">Tidak dapat terhubung ke server.</div></div>`;
+  }
+}
+
+formSiswa.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const id = document.getElementById("siswa-id").value;
+  const nama_siswa = document.getElementById("nama-siswa").value.trim();
+  const kelas = document.getElementById("kelas-siswa").value;
+  const status = document.getElementById("status-siswa").value;
+  const message = document.getElementById("siswa-message");
+
+  if (!nama_siswa || !kelas) {
+    message.style.color = "#dc2626";
+    message.textContent = "Nama siswa dan kelas wajib diisi.";
+    return;
+  }
+
+  try {
+    const url = id ? `${API_URL}/siswa/${id}` : `${API_URL}/siswa`;
+    const method = id ? "PUT" : "POST";
+
+    const response = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        nama_siswa,
+        kelas,
+        status
+      })
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      message.style.color = "#dc2626";
+      message.textContent = result.message || "Gagal menyimpan data siswa.";
+      return;
+    }
+
+    message.style.color = "#15803d";
+    message.textContent = id
+      ? "Data siswa berhasil diperbarui."
+      : "Data siswa berhasil ditambahkan.";
+
+    await loadSiswaAdmin();
+
+    setTimeout(closeSiswaModal, 600);
+
+  } catch (error) {
+    console.error(error);
+    message.style.color = "#dc2626";
+    message.textContent = "Tidak dapat terhubung ke server.";
+  }
+});
+
+async function hapusSiswa(id) {
+  if (!confirm("Yakin ingin menghapus data siswa ini?")) return;
+
+  try {
+    const response = await fetch(`${API_URL}/siswa/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      alert(result.message || "Gagal menghapus data siswa.");
+      return;
+    }
+
+    await loadSiswaAdmin();
+
+  } catch (error) {
+    console.error(error);
+    alert("Tidak dapat terhubung ke server.");
+  }
+}
+
+document.getElementById("btn-import-siswa").addEventListener("click", async () => {
+
+  const file = document.getElementById("excel-siswa").files[0];
+
+  if (!file) {
+    alert("Pilih file Excel terlebih dahulu.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("excel", file);
+
+  try {
+    const response = await fetch(`${API_URL}/siswa/import`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      alert(result.message);
+      return;
+    }
+
+    alert(result.message);
+
+    document.getElementById("excel-siswa").value = "";
+
+    await loadSiswaAdmin();
+
+  } catch (error) {
+    console.error(error);
+    alert("Gagal mengimpor data siswa.");
+  }
+
+});
+
+/* ===========================
+   IMPORT JADWAL DARI EXCEL
+=========================== */
+
+const btnImportJadwal = document.getElementById("btn-import-jadwal");
+const excelJadwal = document.getElementById("excel-jadwal");
+
+if (btnImportJadwal && excelJadwal) {
+  btnImportJadwal.addEventListener("click", async () => {
+    const file = excelJadwal.files[0];
+    if (!file) {
+      alert("Pilih file Excel jadwal pelajaran terlebih dahulu.");
+      return;
+    }
+
+    const yakin = confirm(
+      "Jadwal pelajaran yang tersimpan saat ini akan diganti dengan data dari Excel. " +
+      "Jadwal ekstrakurikuler TIDAK akan dihapus. Lanjutkan?"
+    );
+    if (!yakin) return;
+
+    btnImportJadwal.disabled = true;
+    btnImportJadwal.textContent = "Mengimpor...";
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch(`${API_URL}/jadwal/import`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData
+      });
+
+      const result = await response.json();
+      alert(result.message || "Proses impor selesai.");
+
+      if (result.success) {
+        excelJadwal.value = "";
+        await loadJadwalAdmin();
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    } finally {
+      btnImportJadwal.disabled = false;
+      btnImportJadwal.textContent = "Import Excel";
+    }
+  });
+}
+
+/* ===========================
+   KELOLA JADWAL
+=========================== */
+
+const modalJadwal = document.getElementById("modal-jadwal");
+const formJadwal = document.getElementById("form-jadwal");
+
+if (modalJadwal && formJadwal) {
+  document.getElementById("btn-open-jadwal-modal").addEventListener("click", openTambahJadwalModal);
+  document.getElementById("btn-close-jadwal-modal").addEventListener("click", closeJadwalModal);
+  document.getElementById("btn-cancel-jadwal-modal").addEventListener("click", closeJadwalModal);
+  document.getElementById("jenis-jadwal").addEventListener("change", updateJadwalFormFields);
+
+  formJadwal.addEventListener("submit", simpanJadwal);
+}
+
+async function loadJadwalAdmin() {
+  const lessonTarget = document.getElementById("jadwal-pelajaran-grid");
+  const extraTarget = document.getElementById("jadwal-ekskul-grid");
+  if (!lessonTarget || !extraTarget) return;
+
+  try {
+    const response = await fetch(`${API_URL}/jadwal/admin`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const result = await response.json();
+
+    if (!result.success) {
+      lessonTarget.innerHTML = `<div class="admin-schedule-empty">${escapeHTML(result.message || "Gagal memuat jadwal pelajaran.")}</div>`;
+      extraTarget.innerHTML = `<div class="admin-schedule-empty">Gagal memuat jadwal ekstrakurikuler.</div>`;
+      return;
+    }
+
+    jadwalData = result.data || [];
+    const pelajaran = jadwalData.filter(item => item.jenis === "Pelajaran");
+    const ekskul = jadwalData.filter(item => item.jenis === "Ekstrakurikuler");
+    const classOrder = { "VII": 1, "VIII": 2, "IX": 3 };
+    const dayOrder = { "Senin": 1, "Selasa": 2, "Rabu": 3, "Kamis": 4, "Jumat": 5, "Sabtu": 6 };
+
+    pelajaran.sort((a, b) =>
+      (classOrder[a.kelas] || 99) - (classOrder[b.kelas] || 99) ||
+      (dayOrder[a.hari] || 99) - (dayOrder[b.hari] || 99) ||
+      String(a.jam_mulai || "").localeCompare(String(b.jam_mulai || ""))
+    );
+
+    ekskul.sort((a, b) =>
+      (dayOrder[a.hari] || 99) - (dayOrder[b.hari] || 99) ||
+      String(a.mata_pelajaran || "").localeCompare(String(b.mata_pelajaran || ""))
+    );
+
+    document.getElementById("jadwal-pelajaran-count").textContent = `${pelajaran.length} data`;
+    document.getElementById("jadwal-ekskul-count").textContent = `${ekskul.length} data`;
+
+    const groups = { VII: [], VIII: [], IX: [] };
+    pelajaran.forEach(item => {
+      const kelas = String(item.kelas || "").toUpperCase();
+      if (groups[kelas]) groups[kelas].push(item);
+    });
+
+    const renderScheduleRow = item => `
+      <article class="admin-schedule-row">
+        <div class="admin-schedule-row-main">
+          <div class="admin-schedule-subject">${escapeHTML(item.mata_pelajaran || "-")}</div>
+          <div class="admin-schedule-details">
+            <div><span>Hari</span><strong>${escapeHTML(item.hari || "-")}</strong></div>
+            <div><span>Jam</span><strong>${escapeHTML(item.jam_mulai && item.jam_selesai ? `${item.jam_mulai} – ${item.jam_selesai}` : "-")}</strong></div>
+            <div><span>Guru</span><strong>${escapeHTML(item.guru || "-")}</strong></div>
+          </div>
+          <div class="admin-schedule-period">Periode: ${escapeHTML(item.periode || "-")}</div>
+        </div>
+        <div class="admin-schedule-actions">
+          <button type="button" class="action" onclick="openEditJadwalModal(${item.id})">Edit</button>
+          <button type="button" class="action-danger" onclick="hapusJadwal(${item.id})">Hapus</button>
+        </div>
+      </article>`;
+
+    lessonTarget.innerHTML = Object.entries(groups).map(([kelas, items]) => `
+      <article class="admin-schedule-class-card">
+        <div class="admin-class-header">
+          <div><span class="admin-group-kicker">JADWAL PELAJARAN</span><h3>Kelas ${kelas}</h3></div>
+          <span class="admin-group-count">${items.length} jadwal</span>
+        </div>
+        <div class="admin-schedule-list">
+          ${items.length ? items.map(renderScheduleRow).join("") : `<div class="admin-schedule-empty">Belum ada jadwal untuk kelas ${kelas}.</div>`}
+        </div>
+      </article>`).join("");
+
+    extraTarget.innerHTML = ekskul.length ? ekskul.map(item => `
+      <article class="admin-extracurricular-card">
+        <div class="admin-extra-icon">★</div>
+        <div class="admin-extra-main">
+          <span class="admin-group-kicker">EKSTRAKURIKULER</span>
+          <h4>${escapeHTML(item.mata_pelajaran || "Kegiatan")}</h4>
+          <p><strong>${escapeHTML(item.hari || "Hari belum ditentukan")}</strong><span>•</span>${escapeHTML(item.kelas || "Semua Kelas")}</p>
+        </div>
+        <div class="admin-extra-actions">
+          <button type="button" class="action" onclick="openEditJadwalModal(${item.id})">Edit</button>
+          <button type="button" class="action-danger" onclick="hapusJadwal(${item.id})">Hapus</button>
+        </div>
+      </article>`).join("") : `<div class="admin-schedule-empty">Belum ada jadwal ekstrakurikuler.</div>`;
+  } catch (error) {
+    console.error(error);
+    lessonTarget.innerHTML = `<div class="admin-schedule-empty">Tidak dapat terhubung ke server.</div>`;
+    extraTarget.innerHTML = `<div class="admin-schedule-empty">Tidak dapat terhubung ke server.</div>`;
+  }
+}
+
+function updateJadwalFormFields() {
+  const jenis = document.getElementById("jenis-jadwal").value;
+  const pelajaranFields = document.getElementById("jadwal-pelajaran-fields");
+  const periode = document.getElementById("periode-jadwal");
+  const jamMulai = document.getElementById("jam-mulai-jadwal");
+  const jamSelesai = document.getElementById("jam-selesai-jadwal");
+  const kelas = document.getElementById("kelas-jadwal");
+  const guru = document.getElementById("guru-jadwal");
+
+  const isPelajaran = jenis === "Pelajaran";
+  pelajaranFields.style.display = isPelajaran ? "block" : "none";
+
+  [periode, jamMulai, jamSelesai, kelas].forEach(el => {
+    el.required = isPelajaran;
+  });
+
+  guru.required = false;
+
+  if (!isPelajaran) {
+    periode.value = "";
+    jamMulai.value = "";
+    jamSelesai.value = "";
+    kelas.value = "";
+    guru.value = "";
+  }
+}
+
+function openTambahJadwalModal() {
+  formJadwal.reset();
+  document.getElementById("jadwal-id").value = "";
+  document.getElementById("jadwal-modal-title").textContent = "Tambah Jadwal";
+  document.getElementById("jadwal-message").textContent = "";
+  updateJadwalFormFields();
+  modalJadwal.classList.add("show");
+}
+
+function openEditJadwalModal(id) {
+  const item = jadwalData.find(data => Number(data.id) === Number(id));
+  if (!item) return alert("Data jadwal tidak ditemukan.");
+
+  document.getElementById("jadwal-id").value = item.id;
+  document.getElementById("jenis-jadwal").value = item.jenis || "Pelajaran";
+  document.getElementById("periode-jadwal").value = item.periode || "";
+  document.getElementById("mata-pelajaran-jadwal").value = item.mata_pelajaran || "";
+  document.getElementById("kelas-jadwal").value = item.kelas === "Semua Kelas" ? "" : (item.kelas || "");
+  document.getElementById("hari-jadwal").value = item.hari || "";
+  document.getElementById("jam-mulai-jadwal").value = item.jam_mulai || "";
+  document.getElementById("jam-selesai-jadwal").value = item.jam_selesai || "";
+  document.getElementById("guru-jadwal").value = item.guru || "";
+  document.getElementById("keterangan-jadwal").value = item.keterangan || "";
+  document.getElementById("jadwal-modal-title").textContent = "Edit Jadwal";
+  document.getElementById("jadwal-message").textContent = "";
+  updateJadwalFormFields();
+  modalJadwal.classList.add("show");
+}
+
+function closeJadwalModal() {
+  modalJadwal.classList.remove("show");
+}
+
+async function simpanJadwal(event) {
+  event.preventDefault();
+
+  const id = document.getElementById("jadwal-id").value;
+  const message = document.getElementById("jadwal-message");
+  const jenis = document.getElementById("jenis-jadwal").value;
+  const periode = document.getElementById("periode-jadwal").value.trim();
+  const mata_pelajaran = document.getElementById("mata-pelajaran-jadwal").value.trim();
+  const kelas = document.getElementById("kelas-jadwal").value;
+  const hari = document.getElementById("hari-jadwal").value;
+  const jam_mulai = document.getElementById("jam-mulai-jadwal").value;
+  const jam_selesai = document.getElementById("jam-selesai-jadwal").value;
+  const guru = document.getElementById("guru-jadwal").value.trim();
+  const keterangan = document.getElementById("keterangan-jadwal").value.trim();
+
+  if (!jenis || !hari || !mata_pelajaran) {
+    message.style.color = "#dc2626";
+    message.textContent = "Jenis, hari, dan nama mata pelajaran/kegiatan wajib diisi.";
+    return;
+  }
+
+  if (jenis === "Pelajaran") {
+    if (!periode || !kelas || !jam_mulai || !jam_selesai) {
+      message.style.color = "#dc2626";
+      message.textContent = "Untuk jadwal pelajaran, periode, kelas, dan jam wajib diisi.";
+      return;
+    }
+    if (jam_selesai <= jam_mulai) {
+      message.style.color = "#dc2626";
+      message.textContent = "Jam selesai harus lebih besar dari jam mulai.";
+      return;
+    }
+  }
+
+  const payload = {
+    periode: jenis === "Pelajaran" ? periode : null,
+    jenis,
+    hari,
+    jam_mulai: jenis === "Pelajaran" ? jam_mulai : null,
+    jam_selesai: jenis === "Pelajaran" ? jam_selesai : null,
+    kelas: jenis === "Pelajaran" ? kelas : "Semua Kelas",
+    mata_pelajaran,
+    guru: jenis === "Pelajaran" ? guru : null,
+    keterangan
+  };
+
+  try {
+    const response = await fetch(id ? `${API_URL}/jadwal/${id}` : `${API_URL}/jadwal`, {
+      method: id ? "PUT" : "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      message.style.color = "#dc2626";
+      message.textContent = result.message || "Gagal menyimpan jadwal.";
+      return;
+    }
+
+    message.style.color = "#15803d";
+    message.textContent = id ? "Jadwal berhasil diperbarui." : "Jadwal berhasil ditambahkan.";
+    await loadJadwalAdmin();
+    setTimeout(closeJadwalModal, 600);
+  } catch (error) {
+    console.error(error);
+    message.style.color = "#dc2626";
+    message.textContent = "Tidak dapat terhubung ke server.";
+  }
+}
+
+async function hapusJadwal(id) {
+  if (!confirm("Yakin ingin menghapus jadwal ini?")) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/jadwal/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      alert(result.message || "Gagal menghapus jadwal.");
+      return;
+    }
+
+    await loadJadwalAdmin();
+
+  } catch (error) {
+    console.error(error);
+    alert("Tidak dapat terhubung ke server.");
+  }
+}
+
+  const modalKegiatan = document.getElementById("modal-kegiatan");
+  const formKegiatan = document.getElementById("form-kegiatan");
+
+  document.getElementById("btn-open-kegiatan-modal").addEventListener("click", openTambahKegiatanModal);
+  document.getElementById("btn-close-kegiatan-modal").addEventListener("click", closeKegiatanModal);
+  document.getElementById("btn-cancel-kegiatan-modal").addEventListener("click", closeKegiatanModal);
+
+  function openTambahKegiatanModal() {
+    formKegiatan.reset();
+    document.getElementById("kegiatan-id").value = "";
+    document.getElementById("kegiatan-modal-title").textContent = "Tambah Kegiatan";
+    document.getElementById("kegiatan-message").textContent = "";
+    document.getElementById("tanggal-kegiatan").valueAsDate = new Date();
+    modalKegiatan.classList.add("show");
+  }
+
+  function openEditKegiatanModal(id) {
+    const item = kegiatanData.find(data => Number(data.id) === Number(id));
+    if (!item) return alert("Data kegiatan tidak ditemukan.");
+
+    document.getElementById("kegiatan-id").value = item.id;
+    document.getElementById("judul-kegiatan").value = item.judul || "";
+    document.getElementById("tanggal-kegiatan").value = formatDateInput(item.tanggal);
+    document.getElementById("deskripsi-kegiatan").value = item.deskripsi || "";
+    document.getElementById("foto-kegiatan").value = "";
+    document.getElementById("kegiatan-modal-title").textContent = "Edit Kegiatan";
+    document.getElementById("kegiatan-message").textContent = "";
+    modalKegiatan.classList.add("show");
+  }
+
+  function closeKegiatanModal() {
+    modalKegiatan.classList.remove("show");
+  }
+
+  async function loadKegiatanAdmin() {
+    const tbody = document.getElementById("kegiatan-table-body");
+
+    try {
+      const response = await fetch(`${API_URL}/kegiatan/admin`, {
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        tbody.innerHTML = `<tr><td colspan="5">Gagal memuat data kegiatan.</td></tr>`;
+        return;
+      }
+
+      kegiatanData = result.data || [];
+
+      if (kegiatanData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5">Belum ada data kegiatan.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = kegiatanData.map(item => {
+        const mediaUrl = item.foto ? `${BASE_URL}/uploads/${item.foto}` : "";
+        const isVideo = /\.(mp4|webm|ogg|mov|m4v)$/i.test(item.foto || "");
+        const foto = mediaUrl
+          ? (isVideo
+            ? `<video class="admin-thumb admin-media-video" controls preload="metadata"><source src="${escapeHTML(mediaUrl)}"></video>`
+            : `<a href="${escapeHTML(mediaUrl)}" target="_blank"><img src="${escapeHTML(mediaUrl)}" class="admin-thumb" alt="${escapeHTML(item.judul)}"></a>`)
+          : `<div class="admin-thumb-placeholder">Tidak ada media</div>`;
+
+        return `
+          <tr>
+            <td>${foto}</td>
+            <td>${formatTanggal(item.tanggal)}</td>
+            <td>${escapeHTML(item.judul)}</td>
+            <td>${escapeHTML(item.deskripsi)}</td>
+            <td>
+              <span class="action" onclick="openEditKegiatanModal(${item.id})">Edit</span> ·
+              <span class="action-danger" onclick="hapusKegiatan(${item.id})">Hapus</span>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+    } catch (error) {
+      console.error(error);
+      tbody.innerHTML = `<tr><td colspan="5">Tidak dapat terhubung ke server.</td></tr>`;
+    }
+  }
+
+  formKegiatan.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const id = document.getElementById("kegiatan-id").value;
+    const judul = document.getElementById("judul-kegiatan").value.trim();
+    const tanggal = document.getElementById("tanggal-kegiatan").value;
+    const deskripsi = document.getElementById("deskripsi-kegiatan").value.trim();
+    const foto = document.getElementById("foto-kegiatan").files[0];
+    const message = document.getElementById("kegiatan-message");
+
+    if (!judul) {
+      message.style.color = "#dc2626";
+      message.textContent = "Judul kegiatan wajib diisi.";
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("judul", judul);
+    formData.append("tanggal", tanggal);
+    formData.append("deskripsi", deskripsi);
+
+    if (foto) {
+      formData.append("foto", foto);
+    }
+
+    try {
+      const url = id ? `${API_URL}/kegiatan/${id}` : `${API_URL}/kegiatan`;
+      const method = id ? "PUT" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Authorization": `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        message.style.color = "#dc2626";
+        message.textContent = result.message || "Gagal menyimpan data kegiatan.";
+        return;
+      }
+
+      message.style.color = "#15803d";
+      message.textContent = id ? "Kegiatan berhasil diperbarui." : "Kegiatan berhasil ditambahkan.";
+
+      await loadKegiatanAdmin();
+
+      setTimeout(closeKegiatanModal, 600);
+
+    } catch (error) {
+      console.error(error);
+      message.style.color = "#dc2626";
+      message.textContent = "Tidak dapat terhubung ke server.";
+    }
+  });
+
+  async function hapusKegiatan(id) {
+    if (!confirm("Yakin ingin menghapus kegiatan ini?")) return;
+
+    try {
+      const response = await fetch(`${API_URL}/kegiatan/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        alert(result.message || "Gagal menghapus kegiatan.");
+        return;
+      }
+
+      await loadKegiatanAdmin();
+
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    }
+  }
+
+  const modalDokumen = document.getElementById("modal-dokumen");
+  const formDokumen = document.getElementById("form-dokumen");
+
+  document.getElementById("btn-open-dokumen-modal").addEventListener("click", openTambahDokumenModal);
+  document.getElementById("btn-close-dokumen-modal").addEventListener("click", closeDokumenModal);
+  document.getElementById("btn-cancel-dokumen-modal").addEventListener("click", closeDokumenModal);
+
+  function openTambahDokumenModal() {
+    formDokumen.reset();
+    document.getElementById("dokumen-id").value = "";
+    document.getElementById("dokumen-modal-title").textContent = "Upload Dokumen";
+    document.getElementById("dokumen-message").textContent = "";
+    modalDokumen.classList.add("show");
+  }
+
+  function openEditDokumenModal(id) {
+    const item = dokumenData.find(data => Number(data.id) === Number(id));
+    if (!item) return alert("Data dokumen tidak ditemukan.");
+
+    document.getElementById("dokumen-id").value = item.id;
+    document.getElementById("nama-dokumen").value = item.nama_dokumen || "";
+    document.getElementById("kategori-dokumen").value = item.kategori || "";
+    document.getElementById("keterangan-dokumen").value = item.keterangan || "";
+    document.getElementById("file-dokumen").value = "";
+    document.getElementById("dokumen-modal-title").textContent = "Edit Dokumen";
+    document.getElementById("dokumen-message").textContent = "";
+    modalDokumen.classList.add("show");
+  }
+
+  function closeDokumenModal() {
+    modalDokumen.classList.remove("show");
+  }
+
+  async function loadDokumenAdmin() {
+    const tbody = document.getElementById("dokumen-table-body");
+
+    try {
+      const response = await fetch(`${API_URL}/dokumen/admin`, {
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        tbody.innerHTML = `<tr><td colspan="5">Gagal memuat data dokumen.</td></tr>`;
+        return;
+      }
+
+      dokumenData = result.data || [];
+
+      if (dokumenData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5">Belum ada dokumen.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = dokumenData.map(item => `
+        <tr>
+          <td>${escapeHTML(item.nama_dokumen)}</td>
+          <td>${escapeHTML(item.kategori)}</td>
+          <td>${escapeHTML(item.keterangan)}</td>
+          <td>
+            <a href="${BASE_URL}/uploads/${item.file}" target="_blank" class="action">Lihat File</a>
+          </td>
+          <td>
+            <span class="action" onclick="openEditDokumenModal(${item.id})">Edit</span> ·
+            <span class="action-danger" onclick="hapusDokumen(${item.id})">Hapus</span>
+          </td>
+        </tr>
+      `).join("");
+
+    } catch (error) {
+      console.error(error);
+      tbody.innerHTML = `<tr><td colspan="5">Tidak dapat terhubung ke server.</td></tr>`;
+    }
+  }
+
+  formDokumen.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const id = document.getElementById("dokumen-id").value;
+    const nama_dokumen = document.getElementById("nama-dokumen").value.trim();
+    const kategori = document.getElementById("kategori-dokumen").value;
+    const keterangan = document.getElementById("keterangan-dokumen").value.trim();
+    const file = document.getElementById("file-dokumen").files[0];
+    const message = document.getElementById("dokumen-message");
+
+    if (!nama_dokumen || !kategori) {
+      message.style.color = "#dc2626";
+      message.textContent = "Nama dokumen dan kategori wajib diisi.";
+      return;
+    }
+
+    if (!id && !file) {
+      message.style.color = "#dc2626";
+      message.textContent = "File wajib diupload.";
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("nama_dokumen", nama_dokumen);
+    formData.append("kategori", kategori);
+    formData.append("keterangan", keterangan);
+
+    if (file) {
+      formData.append("file", file);
+    }
+
+    try {
+      const url = id ? `${API_URL}/dokumen/${id}` : `${API_URL}/dokumen`;
+      const method = id ? "PUT" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Authorization": `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        message.style.color = "#dc2626";
+        message.textContent = result.message || "Gagal menyimpan dokumen.";
+        return;
+      }
+
+      message.style.color = "#15803d";
+      message.textContent = id ? "Dokumen berhasil diperbarui." : "Dokumen berhasil diupload.";
+
+      await loadDokumenAdmin();
+
+      setTimeout(closeDokumenModal, 600);
+
+    } catch (error) {
+      console.error(error);
+      message.style.color = "#dc2626";
+      message.textContent = "Tidak dapat terhubung ke server.";
+    }
+  });
+
+  async function hapusDokumen(id) {
+    if (!confirm("Yakin ingin menghapus dokumen ini?")) return;
+
+    try {
+      const response = await fetch(`${API_URL}/dokumen/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        alert(result.message || "Gagal menghapus dokumen.");
+        return;
+      }
+
+      await loadDokumenAdmin();
+
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    }
+  }
+
+  function renderBukti(bukti) {
+    if (!bukti) return "-";
+    const fileUrl = `${BASE_URL}/uploads/${bukti}`;
+    return `<a href="${fileUrl}" target="_blank" class="action">Lihat Bukti</a>`;
+  }
+
+  function normalizeStatusLabel(status) {
+    const value = String(status || "").trim().toLowerCase();
+
+    if (value === "memproses" || value === "proses") {
+      return "Diproses";
+    }
+
+    if (value === "menunggu" || value === "selesai" || value === "diproses") {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    return status || "Menunggu";
+  }
+
+  function renderStatusSelect(type, id, status) {
+    const currentStatus = normalizeStatusLabel(status);
+
+    return `
+      <select class="status-select" onchange="ubahStatus('${type}', ${id}, this.value)">
+        <option value="Menunggu" ${currentStatus === "Menunggu" ? "selected" : ""}>Menunggu</option>
+        <option value="Diproses" ${currentStatus === "Diproses" ? "selected" : ""}>Diproses</option>
+        <option value="Selesai" ${currentStatus === "Selesai" ? "selected" : ""}>Selesai</option>
+      </select>
+    `;
+  }
+
+  async function ubahStatus(type, id, status) {
+    const normalizedStatus = normalizeStatusLabel(status);
+
+    try {
+      const endpoint = type === "izin"
+        ? `${API_URL}/izin/${id}/status`
+        : `${API_URL}/pengaduan/${id}/status`;
+
+      const response = await fetch(endpoint, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ status: normalizedStatus })
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        alert(result.message || "Gagal mengubah status.");
+        return;
+      }
+
+      if (type === "izin") {
+        await loadIzinAdmin();
+      } else {
+        await loadPengaduanAdmin();
+      }
+
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    }
+  }
+
+  async function hapusIzin(id) {
+    if (!confirm("Yakin ingin menghapus data izin ini?")) return;
+
+    try {
+      const response = await fetch(`${API_URL}/izin/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        alert(result.message || "Gagal menghapus data izin.");
+        return;
+      }
+
+      await loadIzinAdmin();
+
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    }
+  }
+
+  async function hapusPengaduan(id) {
+    if (!confirm("Yakin ingin menghapus data pengaduan ini?")) return;
+
+    try {
+      const response = await fetch(`${API_URL}/pengaduan/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        alert(result.message || "Gagal menghapus data pengaduan.");
+        return;
+      }
+
+      await loadPengaduanAdmin();
+
+    } catch (error) {
+      console.error(error);
+      alert("Tidak dapat terhubung ke server.");
+    }
+  }
+
+  function updateJumlahIzinPengaduan() {
+    const jumlah = document.getElementById("jumlah-izin-pengaduan");
+    if (!jumlah) return;
+
+    const totalMenunggu =
+      izinData.filter(item => item.status === "Menunggu").length +
+      pengaduanData.filter(item => item.status === "Menunggu").length;
+
+    jumlah.textContent = totalMenunggu;
+  }
+
+  function updateJumlahGuruSiswa() {
+    const jumlah = document.getElementById("jumlah-guru-siswa");
+    if (!jumlah) return;
+
+    jumlah.textContent = guruData.length + siswaData.length;
+  }
+
+  function formatTanggal(tanggal) {
+    if (!tanggal) return "-";
+
+    const date = new Date(tanggal);
+
+    return date.toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    });
+  }
+
+  function formatDateInput(tanggal) {
+    if (!tanggal) return "";
+
+    const date = new Date(tanggal);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+  function escapeHTML(value) {
+    if (!value) return "-";
+
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function showAdminSection(sectionId, updateHash = true) {
+    const sections = document.querySelectorAll(".admin-content > .section");
+    const menuLinks = document.querySelectorAll(".sidebar-menu a");
+    const target = document.getElementById(sectionId) || document.getElementById("ringkasan");
+
+    sections.forEach(section => {
+      section.classList.remove("active-section");
+    });
+
+    target.classList.add("active-section");
+
+    menuLinks.forEach(link => {
+      const href = link.getAttribute("href") || "";
+      link.classList.toggle("active", href === `#${target.id}`);
+    });
+
+    if (updateHash) {
+      history.replaceState(null, "", `#${target.id}`);
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const menuLinks = document.querySelectorAll(".sidebar-menu a");
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", function(event) {
+        const href = this.getAttribute("href");
+        if (!href || !href.startsWith("#")) return;
+        event.preventDefault();
+        showAdminSection(href.replace("#", ""));
+      });
+    });
+
+    const initialSection = window.location.hash ? window.location.hash.replace("#", "") : "ringkasan";
+    showAdminSection(initialSection, false);
+  });
+
+</script>
+
+</body>
+</html>
