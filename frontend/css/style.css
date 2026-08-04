@@ -26,6 +26,7 @@ body {
   font-family: "Poppins", sans-serif;
   background: radial-gradient(circle at top left, #edf2fb 0, #f7f9fc 55%, #e4edf7 100%);
   color: var(--text-main);
+  overflow-x: hidden;
 }
 
 a {
@@ -1366,14 +1367,69 @@ IMPORT EXCEL
 .card-heading-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .card-heading-row h2 { margin: 2px 0 0; }
 .org-card { padding: 20px; }
-.org-chart-modern { background: #f6fafc; border: 1px solid #dce7ee; border-radius: 16px; padding: 20px; }
-.org-tree-level { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; position: relative; }
+.org-chart-modern { background: #f6fafc; border: 1px solid #dce7ee; border-radius: 16px; padding: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.org-tree-level { display: flex; flex-direction: column; align-items: center; gap: 12px; position: relative; min-width: max-content; }
 .org-tree-level + .org-tree-level { margin-top: 28px; padding-top: 22px; border-top: 1px dashed #bfd1dc; }
 .org-tree-level + .org-tree-level::before { content: ""; position: absolute; width: 1px; height: 22px; top: 0; left: 50%; background: #bfd1dc; }
-.org-person { min-width: 170px; max-width: 240px; background: #fff; border: 1px solid #cfe0e8; border-radius: 14px; padding: 13px 15px; text-align: center; box-shadow: 0 5px 15px rgba(15,23,42,.06); }
+.org-level-row { display: grid; gap: 12px; width: 100%; }
+.org-level-row--one { grid-template-columns: repeat(1, minmax(170px, 1fr)); }
+.org-level-row--three { grid-template-columns: repeat(3, minmax(170px, 1fr)); }
+.org-level-row--four { grid-template-columns: repeat(4, minmax(150px, 1fr)); }
+.org-person { width: 100%; min-width: 0; max-width: 240px; background: #fff; border: 1px solid #cfe0e8; border-radius: 14px; padding: 13px 15px; text-align: center; box-shadow: 0 5px 15px rgba(15,23,42,.06); justify-self: center; }
 .org-person strong { display: block; font-size: 13px; color: var(--text-main); margin-bottom: 3px; }
 .org-person span { display: block; font-size: 11px; color: var(--primary-2); }
 .org-empty { text-align: center; color: #64748b; font-size: 13px; padding: 10px; }
+
+@media (max-width: 900px) {
+  .org-chart-modern {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+
+  .org-tree-level {
+    align-items: stretch;
+    min-width: 100%;
+  }
+
+  .org-level-row--four,
+  .org-level-row--three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .org-card {
+    padding: 14px;
+  }
+
+  .org-chart-modern {
+    padding: 14px;
+  }
+
+  .org-tree-level {
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .org-level-row--four,
+  .org-level-row--three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .org-level-row--one {
+    grid-template-columns: 1fr;
+  }
+
+  .org-person {
+    max-width: none;
+  }
+
+  .org-tree-level + .org-tree-level {
+    margin-top: 18px;
+    padding-top: 16px;
+  }
+}
 .student-class-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; align-items: start; }
 .student-class-card { padding: 0; overflow: hidden; margin-bottom: 0; }
 .student-class-header { padding: 18px; background: linear-gradient(135deg, #0b3c5d, #1e5f74); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -1382,7 +1438,7 @@ IMPORT EXCEL
 .student-list { list-style: none; padding: 8px 18px 14px; }
 .student-list li { padding: 9px 0; border-bottom: 1px solid #edf2f5; font-size: 13px; display: flex; justify-content: space-between; gap: 8px; }
 .student-list li:last-child { border-bottom: 0; }
-.student-name { font-weight: 600; color: #1e293b; }
+.student-name { font-weight: 600; color: #1e293b; overflow-wrap: anywhere; word-break: break-word; }
 .student-status { font-size: 10px; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 999px; white-space: nowrap; align-self: center; }
 .student-empty { color: #64748b; font-size: 12px; padding: 12px 0; }
 
@@ -1411,10 +1467,17 @@ IMPORT EXCEL
   .profile-location-card { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-location { grid-column: span 2; }
+  .org-chart-modern { overflow-x: auto; }
+  .org-tree-level { justify-content: flex-start; }
 }
 @media (max-width: 600px) {
   .profile-card, .profile-location-card { padding: 16px; }
   .profile-map { height: 240px; }
+  .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .student-class-header, .student-list li { flex-direction: column; align-items: flex-start; }
+  .student-count, .student-status { white-space: normal; }
+  .org-person { min-width: 0; max-width: 100%; width: 100%; }
+  .org-tree-level { gap: 10px; }
   .footer-inner { grid-template-columns: 1fr; gap: 22px; }
   .footer-location { grid-column: auto; }
   .footer-map-preview { height: 150px; }

@@ -217,7 +217,7 @@ async function loadGuruPublic() {
   if (!tbody && !organisasi) return;
 
   try {
-    const response = await fetch(`${API_URL}/guru`);
+    const response = await fetch(`${API_URL}/guru`, { cache: "no-store" });
     const result = await response.json();
     const data = (result.data || []).slice().sort((a, b) =>
       String(a.nama_guru || "").localeCompare(String(b.nama_guru || ""), "id", { sensitivity: "base" })
@@ -251,25 +251,126 @@ function renderOrganisasiGuru(data) {
   const target = document.getElementById("guru-organisasi");
   if (!target) return;
 
-  const normalize = value => String(value || "").toLowerCase();
-  const kepala = data.filter(item => /kepala sekolah/.test(normalize(item.jabatan)));
-  const wakil = data.filter(item => /wakil kepala|wakasek/.test(normalize(item.jabatan)));
-  const lainnya = data.filter(item => !kepala.includes(item) && !wakil.includes(item));
+  const normalize = value => String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+  const roleOverrides = {
+    "rias dewi setyowati, s.pd": "kepala sekolah",
+    "argo suryawan, s.si": "wakil kepala sekolah",
+  };
+  const structuralPatterns = [
+    /kepala sekolah/i,
+    /wakil kepala sekolah/i,
+    /wakasek/i,
+    /operator sekolah/i,
+    /operator/i,
+    /sekretaris/i,
+    /kurikulum/i,
+    /kesiswaan/i,
+    /sarana/i,
+    /prasarana/i,
+    /bendahara/i,
+    /humas/i,
+    /perpustakaan/i,
+    /laboratorium/i,
+    /tata usaha/i,
+  ];
 
-  const renderLevel = (items, fallback) => {
+  const getNormalizedRole = item => {
+    const nama = normalize(item.nama_guru);
+    const jabatan = normalize(item.jabatan);
+    return roleOverrides[nama] || jabatan;
+  };
+
+  const isStructuralRole = item => {
+    const jabatan = getNormalizedRole(item);
+    const nama = normalize(item.nama_guru);
+    if (!jabatan) return false;
+
+    const excludedNames = ["drajad sektiono", "nur rohim"];
+    if (excludedNames.includes(nama)) return false;
+
+    return structuralPatterns.some(pattern => pattern.test(jabatan));
+  };
+
+  const getRoleRank = item => {
+    const jabatan = getNormalizedRole(item);
+    if (/kepala sekolah/.test(jabatan)) return 0;
+    if (/wakil kepala sekolah|wakasek/.test(jabatan)) return 1;
+    if (/sekretaris|tata usaha/.test(jabatan)) return 2;
+    if (/kurikulum/.test(jabatan)) return 3;
+    if (/kesiswaan/.test(jabatan)) return 4;
+    if (/sarana|prasarana/.test(jabatan)) return 5;
+    if (/bendahara/.test(jabatan)) return 6;
+    if (/operator sekolah|operator/.test(jabatan)) return 7;
+    if (/humas|perpustakaan|laboratorium/.test(jabatan)) return 8;
+    return 99;
+  };
+
+  const dedupeByName = list => {
+    const map = new Map();
+
+    list.forEach(item => {
+      const name = normalize(item.nama_guru);
+      if (!name) return;
+
+      const existing = map.get(name);
+      if (!existing) {
+        map.set(name, item);
+        return;
+      }
+
+      if (getRoleRank(item) < getRoleRank(existing)) {
+        map.set(name, item);
+      }
+    });
+
+    return Array.from(map.values());
+  };
+
+  const structural = dedupeByName(data.filter(isStructuralRole));
+
+  const cleaned = structural
+    .sort((a, b) => getRoleRank(a) - getRoleRank(b))
+    .sort((a, b) => {
+      const aName = normalize(a.nama_guru);
+      const bName = normalize(b.nama_guru);
+      return aName.localeCompare(bName, "id", { sensitivity: "base" });
+    });
+
+  const kepalaPreferred = data.find(item => normalize(item.nama_guru) === "rias dewi setyowati, s.pd");
+  const wakilPreferred = data.find(item => normalize(item.nama_guru) === "argo suryawan, s.si");
+
+  const kepala = kepalaPreferred
+    ? [kepalaPreferred]
+    : cleaned.filter(item => /kepala sekolah/.test(getNormalizedRole(item))).slice(0, 1);
+
+  const wakil = wakilPreferred
+    ? [wakilPreferred]
+    : cleaned.filter(item => /wakil kepala sekolah|wakasek/.test(getNormalizedRole(item))).slice(0, 1);
+
+  const lainnya = cleaned.filter(item => !/kepala sekolah/.test(getNormalizedRole(item)) && !/wakil kepala sekolah|wakasek/.test(getNormalizedRole(item)));
+  const levelBawah1 = lainnya.slice(0, 4);
+  const levelBawah2 = lainnya.slice(4);
+
+  const renderLevel = (items, fallback, variant = "three") => {
     if (!items.length) return `<div class="org-empty">${fallback}</div>`;
-    return items.map(item => `
-      <div class="org-person">
-        <strong>${escapeHTML(item.nama_guru || "-")}</strong>
-        <span>${escapeHTML(item.jabatan || item.mata_pelajaran || "Guru")}</span>
+
+    return `
+      <div class="org-level-row org-level-row--${variant}">
+        ${items.map(item => `
+          <div class="org-person">
+            <strong>${escapeHTML(item.nama_guru || "-")}</strong>
+            <span>${escapeHTML(getNormalizedRole(item))}</span>
+          </div>
+        `).join("")}
       </div>
-    `).join("");
+    `;
   };
 
   target.innerHTML = `
-    <div class="org-tree-level">${renderLevel(kepala, "Kepala sekolah belum dicantumkan pada data guru.")}</div>
-    <div class="org-tree-level">${renderLevel(wakil, "Wakil kepala sekolah belum dicantumkan pada data guru.")}</div>
-    <div class="org-tree-level">${renderLevel(lainnya, "Belum ada guru lainnya.")}</div>
+    <div class="org-tree-level">${renderLevel(kepala, "Kepala sekolah belum dicantumkan pada data guru.", "one")}</div>
+    <div class="org-tree-level">${renderLevel(wakil, "Wakil kepala sekolah belum dicantumkan pada data guru.", "one")}</div>
+    <div class="org-tree-level">${renderLevel(levelBawah1, "Belum ada guru lainnya.", "four")}</div>
+    <div class="org-tree-level">${renderLevel(levelBawah2, "Belum ada guru lainnya.", "three")}</div>
   `;
 }
 
