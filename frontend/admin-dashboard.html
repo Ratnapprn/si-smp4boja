@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
 :root {
   --bg-body: #f5f7fb;
@@ -36,7 +37,6 @@ body {
   font-family: "Poppins", sans-serif;
   background: radial-gradient(circle at top left, #edf2fb 0, #f7f9fc 55%, #e4edf7 100%);
   color: var(--text-main);
-  overflow-x: hidden;
 }
 
 a {
@@ -794,50 +794,12 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .admin-page {
-    grid-template-columns: 1fr !important;
+  .admin-layout {
+    flex-direction: column;
   }
 
   .admin-sidebar {
     width: 100%;
-    position: static !important;
-    min-width: 0;
-  }
-
-  .admin-content {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .sidebar-menu {
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 6px;
-  }
-
-  .sidebar-menu a {
-    white-space: nowrap;
-  }
-
-  .admin-header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .admin-top-actions {
-    flex-wrap: wrap;
-    gap: 8px 12px;
-    width: 100%;
-  }
-
-  .table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .admin-table {
-    min-width: 0;
   }
 
   .footer-inner {
@@ -860,49 +822,6 @@ textarea:focus {
     overflow-x: auto;
     flex-wrap: nowrap;
     max-width: calc(100vw - 90px);
-  }
-
-  .admin-page {
-    padding: 12px;
-  }
-
-  .admin-header-inner {
-    padding: 10px 14px;
-  }
-
-  .admin-top-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-
-@media (max-width: 560px) {
-  .admin-brand {
-    width: 100%;
-  }
-
-  .admin-title {
-    font-size: 16px;
-  }
-
-  .admin-subtitle {
-    font-size: 11px;
-  }
-
-  .sidebar-menu {
-    gap: 8px;
-  }
-
-  .summary-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .admin-top-actions {
-    justify-content: flex-start;
-  }
-
-  .admin-page {
-    padding: 10px;
   }
 }
 
@@ -1238,10 +1157,38 @@ textarea:focus {
 .admin-content { min-width: 0; }
 .admin-content > .section { display: none !important; margin-bottom: 22px; }
 .admin-content > .section.active-section { display: block !important; }
-.summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 12px; }
-.summary-card, .card { background: #ffffff; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(15, 23, 42, .05); padding: 14px; }
-.summary-card h3 { font-size: 14px; margin-bottom: 8px; }
-.summary-number { font-size: 30px; font-weight: 700; color: #0b3c5d; line-height: 1; margin-bottom: 8px; }
+.summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 12px; }
+.summary-card, .card { background: #ffffff; border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 8px 22px rgba(15, 23, 42, .07); padding: 16px 18px; }
+.summary-card { position: relative; overflow: hidden; transition: transform .18s ease, box-shadow .18s ease; }
+.summary-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15, 23, 42, .12); }
+.summary-card::before { content: ""; position: absolute; width: 90px; height: 90px; border-radius: 50%; right: -24px; top: -24px; opacity: .25; }
+.summary-card h3 { font-size: 13px; margin-bottom: 8px; color: #334155; font-weight: 600; }
+.summary-number { font-size: 32px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+.summary-card p { font-size: 12px; color: #64748b; margin: 0; }
+.summary-card.sc-blue,
+.summary-card.sc-green,
+.summary-card.sc-amber {
+  background: #ffffff;
+  border: 1px solid #d4e0e8;
+  border-left: 4px solid #0b3c5d;
+}
+.summary-card.sc-blue::before,
+.summary-card.sc-green::before,
+.summary-card.sc-amber::before { background: rgba(11, 60, 93, 0.08); }
+.summary-card.sc-blue .summary-number,
+.summary-card.sc-green .summary-number,
+.summary-card.sc-amber .summary-number { color: #0b3c5d; }
+.summary-card.sc-green { border-left-color: #1e5f74; }
+.summary-card.sc-amber { border-left-color: #2a6f84; }
+.chart-panel-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; margin-top: 20px; }
+.chart-panel { background: linear-gradient(160deg, #ffffff, #f5f9fc); border: 1px solid #dbe5ec; border-radius: 18px; padding: 18px; box-shadow: 0 10px 26px rgba(11,60,93,.07); }
+.chart-panel h3 { font-size: 15px; margin-bottom: 6px; color: #0f172a; }
+.chart-panel .chart-desc { font-size: 12px; color: #64748b; margin-bottom: 12px; }
+.chart-wrap { position: relative; height: 260px; }
+@media (max-width: 900px) {
+  .chart-panel-grid { grid-template-columns: 1fr; }
+  .chart-wrap { height: 220px; }
+}
 .section-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 12px; }
 .table-wrapper { overflow-x: auto; }
 .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 760px; }
@@ -1326,25 +1273,7 @@ textarea:focus {
 .admin-extra-main p { margin:0; color:#64748b; font-size:12px; display:flex; gap:7px; align-items:center; flex-wrap:wrap; }
 .admin-extra-actions { display:flex; flex-direction:column; gap:5px; white-space:nowrap; font-size:12px; }
 .admin-schedule-empty { padding:24px; color:#64748b; text-align:center; background:#fff; border:1px dashed #cbd5e1; border-radius:12px; grid-column:1/-1; }
-@media (max-width: 1000px) {
-  .admin-student-class-grid,
-  .admin-schedule-class-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 18px;
-    padding-bottom: 8px;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-  }
-  .admin-class-card,
-  .admin-schedule-class-card {
-    flex: 0 0 300px;
-    min-width: 300px;
-    scroll-snap-align: start;
-  }
-  .admin-schedule-day-grid,
-  .admin-extracurricular-grid { grid-template-columns:1fr; }
-}
+@media (max-width: 1000px) { .admin-student-class-grid { grid-template-columns:1fr; } .admin-schedule-day-grid, .admin-extracurricular-grid { grid-template-columns:1fr; } }
 @media (max-width: 650px) { .admin-student-row, .admin-extracurricular-card { align-items:flex-start; flex-direction:column; } .admin-student-meta { flex-wrap:wrap; } .admin-extra-actions { flex-direction:row; } }
 
 
@@ -1359,7 +1288,6 @@ textarea:focus {
   gap: 18px;
   background: #f8fafc;
   align-items: start;
-  min-width: 0;
 }
 .admin-schedule-class-card {
   background: #fff;
@@ -1453,8 +1381,7 @@ textarea:focus {
   .admin-schedule-class-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
-  .admin-schedule-class-grid { display: flex; overflow-x: auto; grid-template-columns: none; }
-  .admin-schedule-class-card { flex: 0 0 300px; min-width: 300px; }
+  .admin-schedule-class-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .admin-schedule-details { grid-template-columns: 1fr 1fr; }
@@ -1512,22 +1439,39 @@ textarea:focus {
       <p class="desc">Gambaran umum data yang dikelola admin pada Sistem Informasi SMP Negeri 4 Boja Satu Atap.</p>
 
       <div class="summary-grid">
-        <div class="summary-card">
+        <div class="summary-card sc-blue">
           <h3>Pengumuman Aktif</h3>
           <div class="summary-number" id="jumlah-pengumuman">0</div>
           <p>Pengumuman yang tampil di website.</p>
         </div>
 
-        <div class="summary-card">
+        <div class="summary-card sc-green">
           <h3>Data Guru & Siswa</h3>
           <div class="summary-number" id="jumlah-guru-siswa">0</div>
           <p>Total data guru dan siswa.</p>
         </div>
 
-        <div class="summary-card">
+        <div class="summary-card sc-amber">
           <h3>Izin & Pengaduan</h3>
           <div class="summary-number" id="jumlah-izin-pengaduan">0</div>
           <p>Data yang masih menunggu diproses.</p>
+        </div>
+      </div>
+
+      <div class="chart-panel-grid">
+        <div class="chart-panel">
+          <h3>Grafik Data Sekolah</h3>
+          <p class="chart-desc">Perbandingan jumlah data utama di sistem informasi.</p>
+          <div class="chart-wrap">
+            <canvas id="chart-overview"></canvas>
+          </div>
+        </div>
+        <div class="chart-panel">
+          <h3>Status Izin & Pengaduan</h3>
+          <p class="chart-desc">Distribusi status permohonan yang masuk.</p>
+          <div class="chart-wrap">
+            <canvas id="chart-status"></canvas>
+          </div>
         </div>
       </div>
     </section>
@@ -2298,6 +2242,7 @@ textarea:focus {
 
       pengumumanData = result.data || [];
       jumlahPengumuman.textContent = pengumumanData.filter(item => item.status === "Aktif").length;
+      updateDashboardCharts();
 
       if (pengumumanData.length === 0) {
         tbody.innerHTML = `<tr><td colspan="5">Belum ada data pengumuman.</td></tr>`;
@@ -3722,6 +3667,138 @@ async function hapusJadwal(id) {
     }
   }
 
+  let chartOverview = null;
+  let chartStatus = null;
+
+  function countByStatus(list) {
+    const counts = { Menunggu: 0, Disetujui: 0, Ditolak: 0, Diproses: 0, Selesai: 0, Lainnya: 0 };
+    (list || []).forEach(item => {
+      const raw = String(item.status || "").trim().toLowerCase();
+      if (raw.includes("menunggu") || raw.includes("pending")) counts.Menunggu += 1;
+      else if (raw.includes("setuju") || raw.includes("approve")) counts.Disetujui += 1;
+      else if (raw.includes("tolak") || raw.includes("reject")) counts.Ditolak += 1;
+      else if (raw.includes("proses")) counts.Diproses += 1;
+      else if (raw.includes("selesai") || raw.includes("done")) counts.Selesai += 1;
+      else counts.Lainnya += 1;
+    });
+    return counts;
+  }
+
+  function updateDashboardCharts() {
+    if (typeof Chart === "undefined") return;
+
+    const aktifPengumuman = (pengumumanData || []).filter(item => item.status === "Aktif").length;
+    const totalGuru = (guruData || []).length;
+    const totalSiswa = (siswaData || []).length;
+    const totalIzin = (izinData || []).length;
+    const totalPengaduan = (pengaduanData || []).length;
+
+    const overviewCanvas = document.getElementById("chart-overview");
+    const statusCanvas = document.getElementById("chart-status");
+    if (!overviewCanvas || !statusCanvas) return;
+
+    if (chartOverview) chartOverview.destroy();
+    chartOverview = new Chart(overviewCanvas, {
+      type: "bar",
+      data: {
+        labels: ["Pengumuman Aktif", "Guru", "Siswa", "Izin", "Pengaduan"],
+        datasets: [{
+          label: "Jumlah data",
+          data: [aktifPengumuman, totalGuru, totalSiswa, totalIzin, totalPengaduan],
+          backgroundColor: [
+            "rgba(33, 150, 243, 0.75)",
+            "rgba(76, 175, 80, 0.75)",
+            "rgba(0, 172, 193, 0.75)",
+            "rgba(255, 167, 38, 0.75)",
+            "rgba(236, 64, 122, 0.75)"
+          ],
+          borderColor: [
+            "#1976d2",
+            "#388e3c",
+            "#00838f",
+            "#f57c00",
+            "#c2185b"
+          ],
+          borderWidth: 1.5,
+          borderRadius: 10,
+          maxBarThickness: 48
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "#0f172a",
+            padding: 10,
+            cornerRadius: 8
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { font: { family: "Poppins", size: 11 }, color: "#475569" }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: { precision: 0, font: { family: "Poppins", size: 11 }, color: "#64748b" },
+            grid: { color: "rgba(148, 163, 184, 0.2)" }
+          }
+        }
+      }
+    });
+
+    const izinCounts = countByStatus(izinData);
+    const pengaduanCounts = countByStatus(pengaduanData);
+    const statusLabels = ["Menunggu", "Disetujui", "Ditolak", "Diproses", "Selesai"];
+    const statusData = statusLabels.map(label => (izinCounts[label] || 0) + (pengaduanCounts[label] || 0));
+
+    // Jika semua nol, tampilkan placeholder kecil agar chart tetap terlihat
+    const hasData = statusData.some(v => v > 0);
+    const doughnutData = hasData ? statusData : [1];
+    const doughnutLabels = hasData ? statusLabels : ["Belum ada data"];
+    const doughnutColors = hasData
+      ? ["#ffb300", "#43a047", "#e53935", "#1e88e5", "#8e24aa"]
+      : ["#cbd5e1"];
+
+    if (chartStatus) chartStatus.destroy();
+    chartStatus = new Chart(statusCanvas, {
+      type: "doughnut",
+      data: {
+        labels: doughnutLabels,
+        datasets: [{
+          data: doughnutData,
+          backgroundColor: doughnutColors,
+          borderWidth: 2,
+          borderColor: "#ffffff",
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: "58%",
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: {
+              boxWidth: 12,
+              padding: 12,
+              font: { family: "Poppins", size: 11 },
+              color: "#475569"
+            }
+          },
+          tooltip: {
+            backgroundColor: "#0f172a",
+            padding: 10,
+            cornerRadius: 8
+          }
+        }
+      }
+    });
+  }
+
   function updateJumlahIzinPengaduan() {
     const jumlah = document.getElementById("jumlah-izin-pengaduan");
     if (!jumlah) return;
@@ -3731,6 +3808,7 @@ async function hapusJadwal(id) {
       pengaduanData.filter(item => item.status === "Menunggu").length;
 
     jumlah.textContent = totalMenunggu;
+    updateDashboardCharts();
   }
 
   function updateJumlahGuruSiswa() {
@@ -3738,6 +3816,7 @@ async function hapusJadwal(id) {
     if (!jumlah) return;
 
     jumlah.textContent = guruData.length + siswaData.length;
+    updateDashboardCharts();
   }
 
   function formatTanggal(tanggal) {
